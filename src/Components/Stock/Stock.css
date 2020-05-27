@@ -20,10 +20,9 @@
 
 .Stock-information {
   flex-grow: 1;
-  display: flex;
+  display: inline;
   flex-direction: column;
   justify-content: center;
-  height: 72px;
 }
 
 .Stock-information h3 {
@@ -34,4 +33,10 @@
   font-size: .83rem;
   font-weight: 300;
   color: rgba(256, 256, 256, 0.8);
+}
+
+input {
+  text-align: center;
+  float: right;
+  clear: both;
 }

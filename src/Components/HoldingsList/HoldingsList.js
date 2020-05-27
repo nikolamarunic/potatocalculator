@@ -11,7 +11,7 @@ class HoldingsList extends React.Component {
         {
           this.props.stocks.map(stock => {
             return <Stock stock = {stock}
-            key = {stock.name} onRemove = {this.props.onRemove}/>
+            key = {stock.name} onRemove = {this.props.onRemove} allocation = {stock.allocation}/>
           })
         }
       </div>

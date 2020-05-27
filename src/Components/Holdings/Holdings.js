@@ -8,6 +8,7 @@ class Holdings extends React.Component {
       <div className="Holdings">
         <h2>Your Holdings</h2>
         <HoldingsList stocks = {this.props.holdings} onRemove = {this.props.onRemove}/>
+        <button class="HoldingsButton">+</button>
       </div>
     );
   }
