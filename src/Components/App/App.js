@@ -7,16 +7,16 @@ class App extends React.Component {
     super(props);
     this.state = {
       holdings: [ {name: 'CDN', allocation: 27}, {name: 'CDN-B', allocation: 20}, {name: 'USA', allocation: 27}, {name: 'INTL', allocation: 27}]
-    }
-
+    };
     this.removeStock = this.removeStock.bind(this);
   }
+
   removeStock(stock) {
     let stocks = this.state.holdings;
-    stocks = stocks.filter(currStock => currStock.name !== stock.key);
+    stocks = stocks.filter(currStock => currStock.name !== stock.name);
     this.setState({holdings: stocks});
-
   }
+
   render() {
     return (
       <div>
