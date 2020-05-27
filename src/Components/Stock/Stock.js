@@ -21,9 +21,8 @@ class Stock extends React.Component {
     return (
       <div className="Stock">
         <div className="Stock-information">
-          {/* <h3>{this.props.stock.name} | {this.props.stock.allocation}</h3> */}
           <label for = {this.props.stock.name}> {this.props.stock.name} </label>
-          <input name = {this.props.stock.name} id={this.props.stock.name} type={Number} value = {this.props.stock.allocation}></input>
+          <input name = {this.props.stock.name} id={this.props.stock.name} type={Number} value = {this.props.stock.allocation} className="allocation"></input>
         </div>
         {this.renderAction()}
       </div>

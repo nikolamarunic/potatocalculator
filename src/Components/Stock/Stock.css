@@ -35,8 +35,12 @@
   color: rgba(256, 256, 256, 0.8);
 }
 
-input {
+.allocation {
   text-align: center;
   float: right;
   clear: both;
+}
+
+.stockName {
+  background-color: rgba(2, 114, 36, 0.836);
 }

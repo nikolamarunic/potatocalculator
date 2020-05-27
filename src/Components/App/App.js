@@ -6,9 +6,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      holdings: [ {name: 'CDN', allocation: 27}, {name: 'CDN-B', allocation: 20}, {name: 'USA', allocation: 27}, {name: 'INTL', allocation: 27}]
+      holdings: [ {name: 'CDN-B', allocation: 20}, {name: 'CDN', allocation: 27}, {name: 'USA', allocation: 27}, {name: 'INTL', allocation: 27}]
     };
     this.removeStock = this.removeStock.bind(this);
+    this.addStock = this.addStock.bind(this);
   }
 
   removeStock(stock) {
@@ -17,11 +18,23 @@ class App extends React.Component {
     this.setState({holdings: stocks});
   }
 
+  addStock(stock) {
+    let stocks = this.state.holdings;
+    //Don't want to add duplicate stocks
+    if (stocks.find(savedStock => savedStock.name === stock.name)) {
+      return; //Breaks out of the method if already found
+    }
+    //Else want to add it
+    stocks.push(stock);
+    this.setState({holdings: stocks});
+
+  }
+
   render() {
     return (
       <div>
         <h1>PotatoCalculator</h1>
-        <Holdings holdings = {this.state.holdings} onRemove = {this.removeStock}/>
+        <Holdings holdings = {this.state.holdings} onRemove = {this.removeStock} onAdd = {this.addStock}/>
       </div>
     );
   }
