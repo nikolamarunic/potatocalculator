@@ -10,7 +10,7 @@ class Holdings extends React.Component {
 
   addStock() {
     let tempStock = {name: "New Stock", allocation: 0};
-    this.props.addStock(tempStock);
+    this.props.onAdd(tempStock);
   }
 
   render() {
