@@ -33,7 +33,7 @@ h1 {
 .App {
   height: 100%;
   padding: 0 17% 10% 17%;
-  background-image: url('./background_photo_desktop.jpg');
+  background-color: #282c34;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
