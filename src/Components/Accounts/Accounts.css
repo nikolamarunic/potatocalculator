@@ -5,8 +5,11 @@
   padding: .88rem;
   background-color: rgba(50, 105, 0, 0.7);
   outline: 1px solid black;
-  float:left; 
-  display:inline; 
+  float: left;
+  overflow: scroll;
+  overflow-wrap: break-word;
+  max-width: 40%;
+  
 }
 
 ::-webkit-scrollbar {
@@ -33,8 +36,8 @@
 }
 
 @media only screen and (max-width: 1020px) {
-  .Holdings {
-    width: 90%;
+  .Accounts {
+    width: 40%;
     margin-bottom: 2rem;
   }
 }

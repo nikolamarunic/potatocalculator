@@ -40,3 +40,9 @@ h1 {
   font-weight: 500;
   color: #fff;
 }
+
+.accounts {
+  max-width: 40%;
+  overflow:scroll;
+  display: inline;
+}

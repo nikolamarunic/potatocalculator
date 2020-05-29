@@ -1,5 +1,5 @@
 .AccountEntry {
-  display: flex;
+  display: table-cell;
   align-items: center;
   border-bottom: 1px solid rgba(256, 256, 256, 0.8);
 }

@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(256, 256, 256, 0.8);
+  display: block;
+  width: 100%;
 }
 
 .Account-action {
@@ -23,13 +25,7 @@
   flex-direction: row;
 }
 
-.value {
-  text-align: center;
-  float: right;
-  clear: both;
-}
-
-.stockName {
-  background-color: rgba(2, 114, 36, 0.836);
-  border: 1px solid black;
+.entries {
+  max-width: 100%;
+  overflow: scroll;
 }

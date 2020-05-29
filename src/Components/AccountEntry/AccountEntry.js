@@ -12,15 +12,11 @@ class AccountEntry extends React.Component {
     return;
   }
 
-
-
   render() {
     return (
       <div className="AccountEntry">
         <div className="Account-information">
-          <label  type= 'text' value = {this.props.name} className="stockName"></label>
-        </div>
-        <div className="Account-information">
+          <h4  type= 'text' className="stockName">{this.props.name}</h4>
           <input key={this.props.key} type='number' value = {this.props.value} className="value" onChange = {this.handleAllocChange}></input>
         </div>
       </div>
