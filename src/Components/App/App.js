@@ -19,12 +19,14 @@ class App extends React.Component {
     this.handleNameChange = this.handleNameChange.bind(this);
   }
 
+  //Removes a stock from the user's portfolio. Will affect both the stock component and accounts component.
   removeStock(stock) {
     let stocks = this.state.holdings;
     stocks = stocks.filter(currStock => currStock.name !== stock.name);
     this.setState({holdings: stocks});
   }
 
+  //Adds a stock to a user's portfolio. Will affect both the stock component and accounts component.
   addStock(stock) {
     let stocks = this.state.holdings;
     //Don't want to add duplicate stocks
@@ -37,6 +39,7 @@ class App extends React.Component {
 
   }
 
+  // Handles the allocation change of a stock from the stock container.
   handleAllocChange(newStock) {
     let stocks = this.state.holdings;
     let currStock = stocks.find(savedStock => savedStock.name === newStock.name);
@@ -44,6 +47,7 @@ class App extends React.Component {
     this.setState({holdings: stocks});
   }
 
+  // Handles the name change of a stock from the stock container.
   handleNameChange(newStock) {
     let stocks = this.state.holdings;
     let currStock = stocks.find(savedStock => savedStock.name === newStock.name);
@@ -57,6 +61,7 @@ class App extends React.Component {
         <h1>PotatoCalculator</h1>
         {/* <Holdings holdings = {this.state.holdings} onRemove = {this.removeStock} onAdd = {this.addStock} 
         handleNameChange = {this.handleNameChange} handleAllocChange = {this.handleAllocChange}/> */}
+        
         <Accounts holdings = {this.state.holdings} accounts = {this.state.accounts}/>
       </div>
     );

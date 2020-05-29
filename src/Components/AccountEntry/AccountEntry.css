@@ -1,0 +1,35 @@
+.AccountEntry {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(256, 256, 256, 0.8);
+}
+
+.AccountEntry-action {
+  cursor: pointer;
+  padding: .5rem;
+  font-size: 1.05rem;
+  transition: color .25s;
+  border: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+}
+
+.AccountEntry-action:hover {
+  color: rgba(265, 265, 265, .5);
+}
+
+.AccountEntry-information {
+  flex-grow: 1;
+  flex-direction: row;
+}
+
+.value {
+  text-align: center;
+  float: right;
+  clear: both;
+}
+
+.stockName {
+  background-color: rgba(2, 114, 36, 0.836);
+  border: 1px solid black;
+}

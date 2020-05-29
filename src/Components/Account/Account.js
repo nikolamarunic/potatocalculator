@@ -1,8 +1,9 @@
 import React from 'react';
 import './Account.css';
 
-class Account extends React.Component {
+import AccountEntry from '../AccountEntry/AccountEntry';
 
+class Account extends React.Component {
   constructor(props){
     super(props);
 
@@ -20,13 +21,16 @@ class Account extends React.Component {
   render() {
     return (
       <div className="Account">
-        <div className="Account-information">
-          {/* <label key={this.props.stock.key}  type= 'text' value = {this.props.stock.name} className="stockName" onChange = {this.handleNameChange}></label> */}
-          <label  type= 'text' value = {this.props.stock} className="stockName"></label>
-        </div>
-        <div className="Account-information">
-          {/* <input key={this.props.stock.key} type='number' value = {this.props.stock.allocation} className="value" onChange = {this.handleAllocChange}></input> */}
-        </div>
+        <div className="AccountsList">
+        {
+          this.props.stocks.map((holding, i) => {
+            console.log(this.props.account.values);
+            console.log(this.props.account.values[holding]);
+            return <AccountEntry name = {holding} value = {this.props.account.values[holding]}
+            key = {`ren${i+1}`} />
+          })
+        }
+      </div>
         {this.renderAction()}
       </div>
     );

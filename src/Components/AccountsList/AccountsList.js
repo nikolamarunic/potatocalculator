@@ -10,7 +10,7 @@ class AccountsList extends React.Component {
       <div className="AccountsList">
         {
           this.props.accounts.map((account, i) => {
-            return <Account values = {account} stocks = {this.props.holdings.map(holding => {return holding.name})}
+            return <Account account = {account} stocks = {this.props.holdings.map(holding => {return holding.name})}
             key = {`ren${i+1}`} />
           })
         }
