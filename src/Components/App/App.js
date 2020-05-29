@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Holdings from '../Holdings/Holdings';
+import Accounts from '../Accounts/Accounts';
 
 class App extends React.Component {
   constructor(props) {
@@ -53,6 +54,7 @@ class App extends React.Component {
         <h1>PotatoCalculator</h1>
         <Holdings holdings = {this.state.holdings} onRemove = {this.removeStock} onAdd = {this.addStock} 
         handleNameChange = {this.handleNameChange} handleAllocChange = {this.handleAllocChange}/>
+        <Accounts />
       </div>
     );
   }

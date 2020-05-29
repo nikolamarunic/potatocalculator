@@ -1,11 +1,12 @@
-.Holdings {
+.Accounts {
   width: 40%;
   align-items: center;
   overflow-y: scroll;
   padding: .88rem;
   background-color: rgba(50, 105, 0, 0.7);
   outline: 1px solid black;
-  float:left; display:inline; 
+  float:left; 
+  display:inline; 
 }
 
 ::-webkit-scrollbar {
@@ -13,7 +14,7 @@
     background: transparent;
 }
 
-.HoldingsButton {
+.AccountsButton {
   cursor: pointer;
   width: 8.11rem;
   padding: .77rem 0;
@@ -28,7 +29,7 @@
   font-weight: 500;
 }
 
-.HoldingsButton:hover {
+.AccountsButton:hover {
   background-color: rgba(108, 65, 233, .7);
 }
 
