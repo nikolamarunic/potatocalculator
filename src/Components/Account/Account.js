@@ -28,7 +28,10 @@ class Account extends React.Component {
   render() {
     return (
       <div className="Account">
-        <div className="accountTitle"><h2>{this.props.account.name}</h2></div>
+        <div className="accountTitle">
+          <h2>{this.props.account.name}</h2>
+          {/* <input key={this.props.key}  type= 'text' value = {this.props.account.name}></input> */}
+          </div>
         <div className="entries">
           {
             this.props.stocks.map((holding, i) => {

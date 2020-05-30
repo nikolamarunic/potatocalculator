@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      holdings: [{ name: 'CDN-B', allocation: 20, id: 1 }, { name: 'CDN', allocation: 27, id: 2 }, 
+      holdings: [{ name: 'CDN-B', allocation: 20, id: 1 }, { name: 'CDN', allocation: 27, id: 2 },
       { name: 'USA', allocation: 27, id: 3 }, { name: 'INTL', allocation: 27, id: 4 }],
 
       accounts: [{ name: 'CAD CASH', values: { 'CDN-B': 100, 'CDN': 200, 'USA': 300, 'INTL': 400 } },
@@ -72,7 +72,7 @@ class App extends React.Component {
 
     let accounts = this.state.accounts;
     //Now want to add it to each account, with $0 invested in each account by default.
-    accounts.forEach(function(account) {
+    accounts.forEach(function (account) {
       account.values[stock.name] = 0;
     });
 
@@ -99,8 +99,8 @@ class App extends React.Component {
     //Also want to update the name in each account
     let accounts = this.state.accounts;
     //Now want to add it to each account, with $0 invested in each account by default.
-    
-    accounts.forEach(function(account) {
+
+    accounts.forEach(function (account) {
       account.values[newName] = account.values[oldName];
       delete account.values[oldName];
     });
@@ -112,17 +112,16 @@ class App extends React.Component {
     return (
       <div>
         <h1>PotatoCalculator</h1>
-
-
         <div className="content">
-        <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
-          handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
+          <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
+            handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
 
-        <div className="accounts" >
-          <Accounts holdings={this.state.holdings} accounts={this.state.accounts} 
-          onRemove={this.removeAccount} onAdd={this.addAccount} onAmountChange = {this.handleAccountAmountChange}/>
+          <div className="accounts" >
+            <Accounts holdings={this.state.holdings} accounts={this.state.accounts}
+              onRemove={this.removeAccount} onAdd={this.addAccount} onAmountChange={this.handleAccountAmountChange} />
+          </div>
         </div>
-        </div>
+
 
       </div>
     );

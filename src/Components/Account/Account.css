@@ -29,3 +29,6 @@
   min-width: 101%;
   overflow: scroll;
 }
+.accountTitle {
+  border: 0px;
+}
