@@ -69,8 +69,14 @@ class App extends React.Component {
     }
     //Else want to add it
     stocks.push(stock);
-    this.setState({ holdings: stocks });
 
+    let accounts = this.state.accounts;
+    //Now want to add it to each account, with $0 invested in each account by default.
+    accounts.forEach(function(account) {
+      account.values[stock.name] = 0;
+    });
+
+    this.setState({ holdings: stocks, accounts: accounts });
   }
 
   // Handles the allocation change of a stock from the stock container.
