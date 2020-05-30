@@ -21,6 +21,7 @@ class App extends React.Component {
 
     this.handleAllocChange = this.handleAllocChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleAccountAmountChange = this.handleAccountAmountChange.bind(this);
 
   }
 
@@ -47,8 +48,13 @@ class App extends React.Component {
     this.setState({ accounts: accounts });
   }
 
-  handleAccountAmountChange() {
-    return;
+  handleAccountAmountChange(amountChange) {
+    let accounts = this.state.accounts;
+    let targetAccount = accounts.find(savedAcc => savedAcc.name === amountChange.accountName);
+    let targetFund = amountChange.holdingName;
+    targetAccount.values[targetFund] = amountChange.newAmnt;
+
+    this.setState({ accounts: accounts });
   }
 
   //Adds a stock to a user's portfolio. Will affect both the stock component and accounts component.
@@ -85,11 +91,12 @@ class App extends React.Component {
       <div>
         <h1>PotatoCalculator</h1>
 
-        <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
-          handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
+        {/* <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
+          handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} /> */}
 
         <div className="accounts" >
-          <Accounts holdings={this.state.holdings} accounts={this.state.accounts} onRemove={this.removeAccount} onAdd={this.addAccount}/>
+          <Accounts holdings={this.state.holdings} accounts={this.state.accounts} 
+          onRemove={this.removeAccount} onAdd={this.addAccount} onAmountChange = {this.handleAccountAmountChange}/>
         </div>
 
       </div>

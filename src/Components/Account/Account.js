@@ -7,10 +7,16 @@ class Account extends React.Component {
   constructor(props) {
     super(props);
     this.removeAccount = this.removeAccount.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
   removeAccount() {
     this.props.onRemove(this.props.account);
+  }
+
+  handleAmountChange(amountChange) {
+    amountChange.accountName = this.props.account.name;
+    this.props.onAmountChange(amountChange);
   }
 
   renderAction() {
@@ -24,8 +30,8 @@ class Account extends React.Component {
         <div className="entries">
           {
             this.props.stocks.map((holding, i) => {
-              return <AccountEntry name={holding} value={this.props.account.values[holding]}
-                key={`ren${i + 1}`} />
+              return <AccountEntry name={holding} key={`ren${i + 1}`} value={this.props.account.values[holding]} handleAmountChange = {this.handleAmountChange}
+                />
             })
           }
         </div>

@@ -4,12 +4,19 @@ import './AccountEntry.css';
 class AccountEntry extends React.Component {
   constructor(props){
     super(props);
-
+    this.state = {
+      name: this.props.name,
+      value: this.props.value
+    }
+    this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
-  removeAccount() {
-    //TODO
-    return;
+  handleAmountChange(newAmount) {
+    let newVal =  Number(newAmount.target.value);
+    let change = {holdingName: this.props.name, newAmnt : newVal};
+    this.setState({name: this.props.name, value: newVal});
+
+    this.props.handleAmountChange(change)
   }
 
   render() {
@@ -17,7 +24,7 @@ class AccountEntry extends React.Component {
       <div className="AccountEntry">
         <div className="Account-information">
           <h4  type= 'text' className="stockName">{this.props.name}</h4>
-          <input key={this.props.key} type='number' value = {this.props.value} className="value" onChange = {this.handleAllocChange}></input>
+          <input id={this.props.key} type='number' value = {this.props.value} className="value" onChange = {this.handleAmountChange}></input>
         </div>
       </div>
     );
