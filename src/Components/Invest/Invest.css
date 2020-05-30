@@ -1,0 +1,24 @@
+.Invest {
+  width: 40%;
+  align-items: center;
+  overflow-y: scroll;
+  padding: .88rem;
+  outline: 1px solid black;
+  display: table-cell;
+  text-align: center;
+  
+}
+
+.Invest-action {
+  cursor: pointer;
+  padding: .5rem;
+  font-size: 1.05rem;
+  transition: color .25s;
+  border: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+}
+
+.Account-action:hover {
+  color: rgba(265, 265, 265, .5);
+}

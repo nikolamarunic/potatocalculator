@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 
 .App-logo {
   height: 40vmin;
@@ -35,6 +33,7 @@ h2 {
 }
 
 .App {
+  text-align: center;
   height: 100%;
   width: 100%;
   padding: 0 17% 10% 17%;
@@ -44,7 +43,9 @@ h2 {
   background-repeat: no-repeat;
   font-weight: 500;
   color: #fff;
-  
+}
+.invest {
+  text-align: center;
 }
 
 /* required so that the accounts take up a smaller portion of the screen*/

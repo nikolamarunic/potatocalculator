@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Holdings from '../Holdings/Holdings';
 import Accounts from '../Accounts/Accounts';
+import Invest from '../Invest/Invest';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -121,8 +123,9 @@ class App extends React.Component {
               onRemove={this.removeAccount} onAdd={this.addAccount} onAmountChange={this.handleAccountAmountChange} />
           </div>
         </div>
-
-
+        <div className="invest">
+        <Invest />
+        </div>
       </div>
     );
   }
