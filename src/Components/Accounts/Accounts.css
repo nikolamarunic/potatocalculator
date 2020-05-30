@@ -1,11 +1,13 @@
 .Accounts {
   width: 40%;
   align-items: center;
-  overflow: scroll;
+  overflow-y: scroll;
   padding: .88rem;
   background-color: rgba(50, 105, 0, 0.7);
   outline: 1px solid black;
   float: right;
+  display: table-cell;
+  text-align: center;
   
 }
 

@@ -90,9 +90,22 @@ class App extends React.Component {
   // Handles the name change of a stock from the stock container.
   handleNameChange(newStock) {
     let stocks = this.state.holdings;
-    let currStock = stocks.find(savedStock => savedStock.name === newStock.name);
-    currStock.name = newStock.newName;
-    this.setState({ holdings: stocks });
+    let oldName = newStock.name;
+    let newName = newStock.newName;
+
+    let currStock = stocks.find(savedStock => savedStock.name === oldName);
+    currStock.name = newName;
+
+    //Also want to update the name in each account
+    let accounts = this.state.accounts;
+    //Now want to add it to each account, with $0 invested in each account by default.
+    
+    accounts.forEach(function(account) {
+      account.values[newName] = account.values[oldName];
+      delete account.values[oldName];
+    });
+
+    this.setState({ holdings: stocks, accounts: accounts });
   }
 
   render() {
