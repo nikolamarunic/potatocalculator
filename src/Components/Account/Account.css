@@ -26,6 +26,6 @@
 }
 
 .entries {
-  max-width: 100%;
+  min-width: 101%;
   overflow: scroll;
 }

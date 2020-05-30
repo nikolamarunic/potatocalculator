@@ -6,8 +6,8 @@
   background-color: rgba(50, 105, 0, 0.7);
   outline: 1px solid black;
   float: left;
-  display: inline-block;
-  
+  display: table-cell;  
+  text-align: center;
 }
 
 ::-webkit-scrollbar {
@@ -26,6 +26,7 @@
   transition: background-color .25s;
   border: 0px;
   color: #fff;
+  
   
   font-weight: 500;
 }

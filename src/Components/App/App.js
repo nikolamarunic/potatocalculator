@@ -94,12 +94,15 @@ class App extends React.Component {
       <div>
         <h1>PotatoCalculator</h1>
 
-        {/* <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
-          handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} /> */}
+
+        <div className="content">
+        <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
+          handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
 
         <div className="accounts" >
           <Accounts holdings={this.state.holdings} accounts={this.state.accounts} 
           onRemove={this.removeAccount} onAdd={this.addAccount} onAmountChange = {this.handleAccountAmountChange}/>
+        </div>
         </div>
 
       </div>

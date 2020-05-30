@@ -30,8 +30,13 @@ h1 {
   color: #60c20a;
 }
 
+h2 {
+  text-align: center;
+}
+
 .App {
   height: 100%;
+  width: 100%;
   padding: 0 17% 10% 17%;
   background-color: #282c34;
   background-size: cover;
@@ -39,10 +44,16 @@ h1 {
   background-repeat: no-repeat;
   font-weight: 500;
   color: #fff;
+  
 }
 
+/* required so that the accounts take up a smaller portion of the screen*/
 .accounts {
-  max-width: 40%;
-  overflow:scroll;
-  display: inline;
+  max-width: 50%;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  padding:2%;
 }

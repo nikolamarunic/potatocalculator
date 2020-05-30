@@ -1,14 +1,11 @@
 .Accounts {
   width: 40%;
   align-items: center;
-  overflow-y: scroll;
+  overflow: scroll;
   padding: .88rem;
   background-color: rgba(50, 105, 0, 0.7);
   outline: 1px solid black;
-  overflow: scroll;
-  overflow-wrap: break-word;
-  max-width: 40%;
-  display: inline-block;
+  float: right;
   
 }
 
@@ -37,7 +34,7 @@
 
 @media only screen and (max-width: 1020px) {
   .Accounts {
-    width: 40%;
+    width: 90%;
     margin-bottom: 2rem;
   }
 }
