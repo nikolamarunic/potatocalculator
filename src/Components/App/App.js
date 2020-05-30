@@ -7,16 +7,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      holdings: [{ name: 'CDN-B', allocation: 20, id: 1 }, { name: 'CDN', allocation: 27, id: 2 }, { name: 'CDN', allocation: 27, id: 2 }, { name: 'CDN', allocation: 27, id: 2 }, { name: 'CDN', allocation: 27, id: 2 }, { name: 'CDN', allocation: 27, id: 2 }, { name: 'CDN', allocation: 27, id: 2 }, { name: 'CDN', allocation: 27, id: 2 }, { name: 'CDN', allocation: 27, id: 2 }, { name: 'CDN', allocation: 27, id: 2 }, { name: 'CDN', allocation: 27, id: 2 },{ name: 'CDN', allocation: 27, id: 2 },{ name: 'CDN', allocation: 27, id: 2 },
+      holdings: [{ name: 'CDN-B', allocation: 20, id: 1 }, { name: 'CDN', allocation: 27, id: 2 }, 
       { name: 'USA', allocation: 27, id: 3 }, { name: 'INTL', allocation: 27, id: 4 }],
 
       accounts: [{ name: 'CAD CASH', values: { 'CDN-B': 100, 'CDN': 200, 'USA': 300, 'INTL': 400 } },
       { name: 'CAD TFSA', values: { 'CDN-B': 500, 'CDN': 600, 'USA': 700, 'INTL': 800 } }]
     };
     this.removeStock = this.removeStock.bind(this);
+    this.removeAccount = this.removeAccount.bind(this);
+
     this.addStock = this.addStock.bind(this);
+    this.addAccount = this.addAccount.bind(this);
+
     this.handleAllocChange = this.handleAllocChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
+
   }
 
   //Removes a stock from the user's portfolio. Will affect both the stock component and accounts component.
@@ -24,6 +29,26 @@ class App extends React.Component {
     let stocks = this.state.holdings;
     stocks = stocks.filter(currStock => currStock.name !== stock.name);
     this.setState({ holdings: stocks });
+  }
+
+  removeAccount(account) {
+    let accounts = this.state.accounts;
+    accounts = accounts.filter(currAcc => currAcc.name !== account.name);
+    this.setState({ accounts: accounts });
+  }
+
+  addAccount(account) {
+    let accounts = this.state.accounts;
+
+    if (accounts.find(savedAcc => savedAcc.name === account.name)) {
+      return; //Breaks out of the method if already found
+    }
+    accounts.push(account);
+    this.setState({ accounts: accounts });
+  }
+
+  handleAccountAmountChange() {
+    return;
   }
 
   //Adds a stock to a user's portfolio. Will affect both the stock component and accounts component.
@@ -64,7 +89,7 @@ class App extends React.Component {
           handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
 
         <div className="accounts" >
-          <Accounts holdings={this.state.holdings} accounts={this.state.accounts} />
+          <Accounts holdings={this.state.holdings} accounts={this.state.accounts} onRemove={this.removeAccount} onAdd={this.addAccount}/>
         </div>
 
       </div>

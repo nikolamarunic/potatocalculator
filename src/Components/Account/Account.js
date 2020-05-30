@@ -6,12 +6,11 @@ import AccountEntry from '../AccountEntry/AccountEntry';
 class Account extends React.Component {
   constructor(props) {
     super(props);
-
+    this.removeAccount = this.removeAccount.bind(this);
   }
 
   removeAccount() {
-    //TODO
-    return;
+    this.props.onRemove(this.props.account);
   }
 
   renderAction() {

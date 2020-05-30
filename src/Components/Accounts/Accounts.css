@@ -5,10 +5,10 @@
   padding: .88rem;
   background-color: rgba(50, 105, 0, 0.7);
   outline: 1px solid black;
-  float: left;
   overflow: scroll;
   overflow-wrap: break-word;
   max-width: 40%;
+  display: inline-block;
   
 }
 

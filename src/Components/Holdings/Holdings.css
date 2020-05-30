@@ -6,6 +6,8 @@
   background-color: rgba(50, 105, 0, 0.7);
   outline: 1px solid black;
   float: left;
+  display: inline-block;
+  
 }
 
 ::-webkit-scrollbar {
