@@ -10,10 +10,12 @@ class Account extends React.Component {
     this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
+  //Handles a user deleting their account
   removeAccount() {
     this.props.onRemove(this.props.account);
   }
 
+  //Handles a user changing the amount they have invested in their account
   handleAmountChange(amountChange) {
     amountChange.accountName = this.props.account.name;
     this.props.onAmountChange(amountChange);

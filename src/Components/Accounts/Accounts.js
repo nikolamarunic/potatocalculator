@@ -9,8 +9,10 @@ class Accounts extends React.Component {
     this.addAccount = this.addAccount.bind(this);
   }
 
+  //Handles a user adding a new account to their portfolio
   addAccount() {
     let values = {}
+    //By default have nothing invested in the account
     this.props.holdings.map(holding => {
       values[holding.name] = 0;
     });

@@ -32,12 +32,14 @@ class App extends React.Component {
     this.setState({ holdings: stocks });
   }
 
+  //Handles when a user removes an account from their portfolio.
   removeAccount(account) {
     let accounts = this.state.accounts;
     accounts = accounts.filter(currAcc => currAcc.name !== account.name);
     this.setState({ accounts: accounts });
   }
 
+  //Handles when a user adds a new account to their portfolio
   addAccount(account) {
     let accounts = this.state.accounts;
 
@@ -48,6 +50,7 @@ class App extends React.Component {
     this.setState({ accounts: accounts });
   }
 
+  //Handles when a user changes the amount invested in a fund in an account.
   handleAccountAmountChange(amountChange) {
     let accounts = this.state.accounts;
     let targetAccount = accounts.find(savedAcc => savedAcc.name === amountChange.accountName);

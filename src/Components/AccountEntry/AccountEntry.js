@@ -11,6 +11,8 @@ class AccountEntry extends React.Component {
     this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
+  //Handles the user changing their amlunt invested.
+  //Idea: create an object containing all required information
   handleAmountChange(newAmount) {
     let newVal =  Number(newAmount.target.value);
     let change = {holdingName: this.props.name, newAmnt : newVal};
