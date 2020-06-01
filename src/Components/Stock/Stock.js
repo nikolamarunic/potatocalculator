@@ -49,9 +49,17 @@ class Stock extends React.Component {
       <div className="Stock">
         <div className="Stock-information">
           <input key={this.props.stock.key}  type= 'text' value = {this.props.stock.name} className="stockName" onChange = {this.handleNameChange}></input>
-          <input key={this.props.stock.key} type='number' value = {this.props.stock.allocation} className="allocation" onChange = {this.handleAllocChange}></input>
+          {/* <input key={this.props.stock.key} type='number' value = {this.props.stock.allocation} className="allocation" onChange = {this.handleAllocChange}></input> */}
+          <div className="allocationStats">
+            <input key={this.props.stock.key} type='number' value = {this.props.stock.allocation} className="allocation" onChange = {this.handleAllocChange}></input>
+            <h4>%</h4>
+          </div>
+          
+          
         </div>
-        {this.renderAction()}
+        <div className="removeButton">
+          {this.renderAction()}
+        </div>
       </div>
     );
   }

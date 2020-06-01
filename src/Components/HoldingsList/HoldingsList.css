@@ -1,5 +1,9 @@
 .HoldingsList {
   width: 100%;
   text-align: center;
-  display: table; 
+}
+
+.Stock {
+  width: 100%;
+  margin: 5%;
 }
