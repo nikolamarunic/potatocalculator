@@ -3,15 +3,15 @@ import './Holdings.css';
 import HoldingsList from '../HoldingsList/HoldingsList';
 
 class Holdings extends React.Component {
-  constructor(props) {
-    super(props);
-    this.addStock = this.addStock.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.addStock = this.addStock.bind(this);
+  // }
 
-  addStock() {
-    let tempStock = {name: "New Stock", allocation: 0};
-    this.props.onAdd(tempStock);
-  }
+  // addStock() {
+  //   let tempStock = {name: "New Stock", allocation: 0};
+  //   this.props.onAdd(tempStock);
+  // }
 
   render() {
     return (
