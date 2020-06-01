@@ -1,11 +1,12 @@
 .Stock {
-    display: flex;
+    display: inline-flex;
     align-items: left;
     border: 1px solid rgba(256, 256, 256, 0.8);
     height: 9em; /* 7em and 14em might look better if not adding a line to the bottom*/
     width: 16em;
     background-color: white;
     border-radius: 0.2em;
+    margin-right: 0;
 }
 
 .removeButton {
