@@ -25,7 +25,7 @@ class AccountEntry extends React.Component {
     return (
       <div className="AccountEntry">
         <div className="Account-information">
-          <h4  type= 'text' className="stockName">{this.props.name}</h4>
+          <h4  type= 'text' className="name">{this.props.name}</h4>
           <input key={this.key} type='number' value = {this.props.value} className="value" onChange = {this.handleAmountChange}></input>
         </div>
       </div>

@@ -20,7 +20,7 @@
   color: #61dafb;
 }
 
-h1 {
+h1 { /* header ?*/
   padding: .77rem 0;
   background-color: #397306;
   text-align: center;
@@ -37,7 +37,6 @@ h2 {
   height: 100%;
   width: 100%;
   padding: 0 17% 10% 17%;
-  background-color: #282c34;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -57,4 +56,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   padding:2%;
+  background-color: #f7f9fc;
+
 }
