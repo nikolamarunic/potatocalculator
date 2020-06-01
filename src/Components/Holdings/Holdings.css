@@ -2,10 +2,20 @@
   width: 50%; 
   align-items: center;
   overflow-y: scroll;
-  padding: .88rem;
-  outline: 1px solid black;
+
+  /* outline: 1px solid black; */
   float: left;
   text-align: center;
+}
+
+.holdingsTitle {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.8em;
+  font-weight: 3000;
+  color:#6d757d;
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 
 ::-webkit-scrollbar {
@@ -13,7 +23,7 @@
     background: transparent;
 }
 
-.HoldingsButton {
+/* .HoldingsButton {
   cursor: pointer;
   width: 8.11rem;
   padding: .77rem 0;
@@ -25,10 +35,24 @@
   border: 0px;
   color: #fff;
   font-weight: 500;
+} */
+
+.HoldingsButton{
+  /* display: inline-flex; */
+  align-items: left;
+  border: 1px solid rgba(256, 256, 256, 0.8);
+  height: 9em; /* 7em and 14em might look better if not adding a line to the bottom*/
+  width: 16em;
+  background-color: white;
+  color: #0080ff;
+  border-radius: 0.2em;
+  margin-right: 0;
+  transition: background-color .25s;
 }
 
 .HoldingsButton:hover {
   background-color: rgba(108, 65, 233, .7);
+  background-color: #dcdefe;
 }
 
 @media only screen and (max-width: 1020px) {

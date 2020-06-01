@@ -16,7 +16,7 @@ class Holdings extends React.Component {
   render() {
     return (
       <div className="Holdings">
-        <h2>Your Holdings</h2>
+        <h4 className= "holdingsTitle">Your Holdings</h4>
         <HoldingsList stocks = {this.props.holdings} onRemove = {this.props.onRemove} onAdd = {this.props.onAdd}
         handleNameChange = {this.props.handleNameChange} handleAllocChange = {this.props.handleAllocChange}/>
         <button className="HoldingsButton" onClick = {this.addStock}>+</button>
