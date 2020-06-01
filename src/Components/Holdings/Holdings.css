@@ -1,12 +1,10 @@
 .Holdings {
-  width: 40%;
+  width: 50%; 
   align-items: center;
   overflow-y: scroll;
   padding: .88rem;
-  /* background-color: rgba(50, 105, 0, 0.7); */
   outline: 1px solid black;
   float: left;
-  /* display: table-cell;   */
   text-align: center;
 }
 
@@ -26,8 +24,6 @@
   transition: background-color .25s;
   border: 0px;
   color: #fff;
-  
-  
   font-weight: 500;
 }
 
