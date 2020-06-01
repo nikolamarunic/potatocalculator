@@ -3,7 +3,30 @@
   text-align: left;
 }
 
-.Stock {
-  margin: 5%;
-  display: inline;
+.Stock { /* Since the holdingsButton is not a Stock any changes to stock must also be reflected here */
+  margin: 3%;
+  float: left;
+}
+
+.HoldingsButton{
+  align-items: left;
+  border: 1px solid rgba(256, 256, 256, 0.8);
+  font-size: 1em;
+  height: 9em; /* 7em and 14em might look better if not adding a line to the bottom*/
+  width: 16em;
+  background-color: white;
+  color: #0080ff;
+  border-radius: 0.2em;
+  transition: background-color .25s;
+  
+  margin:3%;
+  margin-right: 0;
+  margin-bottom: 0;
+  cursor: pointer;
+  text-align: center;
+  
+}
+
+.HoldingsButton:hover {
+  background-color: #dcdefe;
 }
