@@ -34,7 +34,7 @@ class App extends React.Component {
   //Removes a stock from the user's portfolio. Will affect both the stock component and accounts component.
   removeStock(stock) {
     let stocks = this.state.holdings;
-    stocks = stocks.filter(currStock => currStock.name !== stock.name);
+    stocks = stocks.filter(currStock => currStock.id !== stock.id);
     this.setState({ holdings: stocks });
   }
 
@@ -83,7 +83,7 @@ class App extends React.Component {
   addStock(stock) {
     let stocks = this.state.holdings;
     //Don't want to add duplicate stocks
-    if (stocks.find(savedStock => savedStock.name === stock.name)) {
+    if (stocks.find(savedStock => savedStock.id === stock.id)) {
       return; //Breaks out of the method if already found
     }
     //Else want to add it
@@ -101,7 +101,7 @@ class App extends React.Component {
   // Handles the allocation change of a stock from the stock container.
   handleAllocChange(newStock) {
     let stocks = this.state.holdings;
-    let currStock = stocks.find(savedStock => savedStock.name === newStock.name);
+    let currStock = stocks.find(savedStock => savedStock.id === newStock.id);
     currStock.allocation = newStock.newAlloc;
     this.setState({ holdings: stocks });
   }

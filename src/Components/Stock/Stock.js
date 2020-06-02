@@ -8,9 +8,9 @@ class Stock extends React.Component {
 
     this.state = {
       name: this.props.stock.name,
-      alloc: this.props.stock.allocation
+      alloc: this.props.stock.allocation,
+      id: this.props.stock.id
     };
-
 
     this.removeStock = this.removeStock.bind(this);
     this.addStock = this.addStock.bind(this);
@@ -33,13 +33,13 @@ class Stock extends React.Component {
   }
 
   handleNameChange(event) {
-    let newStock = {name: this.props.stock.name, allocation: this.props.stock.allocation, newName: event.target.value};
+    let newStock = {name: this.props.stock.name, allocation: this.props.stock.allocation, id: this.props.stock.id, newName: event.target.value};
     this.setState({name: newStock.newName, alloc: this.props.stock.allocation});
     this.props.handleNameChange(newStock);
   }
 
   handleAllocChange(event){
-    let newStock = {name: this.props.stock.name, allocation: this.props.stock.allocation, newAlloc: Number(event.target.value)};
+    let newStock = {name: this.props.stock.name, allocation: this.props.stock.allocation, id: this.props.stock.id, newAlloc: Number(event.target.value)};
     this.setState({alloc: newStock.newAlloc, name: this.props.stock.name});
     this.props.handleAllocChange(newStock);
   }
@@ -54,8 +54,6 @@ class Stock extends React.Component {
             <input key={this.props.stock.key} type='number' value = {this.props.stock.allocation} className="allocation" onChange = {this.handleAllocChange}></input>
             <h4>%</h4>
           </div>
-          
-          
         </div>
         <div className="removeButton">
           {this.renderAction()}

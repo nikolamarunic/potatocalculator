@@ -7,10 +7,17 @@ class HoldingsList extends React.Component {
   constructor(props) {
     super(props);
     this.addStock = this.addStock.bind(this);
+    this.state = {
+      stockId: 4 //By default 3 accounts available
+    }
+    
   }
 
   addStock() {
-    let tempStock = {name: "New Stock", allocation: 0};
+    let newId = this.state.stockId + 1
+    this.setState( {stockId: newId});
+    
+    let tempStock = {name: "New Stock", allocation: 0, id: newId};
     this.props.onAdd(tempStock);
   }
 
