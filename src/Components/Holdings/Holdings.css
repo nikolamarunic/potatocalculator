@@ -1,5 +1,5 @@
 .Holdings {
-  width: 50%; 
+  /* width: 50%;  */
   align-items: center;
   overflow-y: scroll;
 
@@ -14,7 +14,7 @@
   font-weight: 3000;
   color:#6d757d;
   text-align: left;
-  padding: 0;
+  padding-left: 1em;
   margin: 0;
 }
 

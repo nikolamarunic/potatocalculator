@@ -9,11 +9,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      holdings: [{ name: 'CDN-B', allocation: 20, id: 1 }, { name: 'CDN', allocation: 27, id: 2 },
+      holdings: [{ name: 'CDN-B', allocation: 20, id: 1 }, { name: 'CDN', allocation: 26, id: 2 },
       { name: 'USA', allocation: 27, id: 3 }, { name: 'INTL', allocation: 27, id: 4 }],
 
       accounts: [{ name: 'CAD CASH', values: { 'CDN-B': 100, 'CDN': 200, 'USA': 300, 'INTL': 400 } },
-      { name: 'CAD TFSA', values: { 'CDN-B': 500, 'CDN': 600, 'USA': 700, 'INTL': 800 } }]
+      { name: 'CAD TFSA', values: { 'CDN-B': 500, 'CDN': 600, 'USA': 700, 'INTL': 800 } },
+      { name: 'CAD RRSP', values: { 'CDN-B': 900, 'CDN': 1000, 'USA': 700, 'INTL': 1100 } }
+    ]
     };
     this.removeStock = this.removeStock.bind(this);
     this.removeAccount = this.removeAccount.bind(this);
@@ -114,7 +116,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>PotatoCalculator</h1>
-        <div className="content">
+        {/* <div className="content"> */}
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
             handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
 
@@ -122,7 +124,7 @@ class App extends React.Component {
             <Accounts holdings={this.state.holdings} accounts={this.state.accounts}
               onRemove={this.removeAccount} onAdd={this.addAccount} onAmountChange={this.handleAccountAmountChange} />
           </div>
-        </div>
+        {/* </div> */}
         <div className="invest">
         <Invest />
         </div>

@@ -30,6 +30,13 @@
   font-weight: 500;
 }
 
+.accountsTitle {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.8em;
+  font-weight: 3000;
+  color:#6d757d;
+}
+
 .AccountsButton:hover {
   background-color: rgba(108, 65, 233, .7);
 }

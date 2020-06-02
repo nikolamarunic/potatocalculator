@@ -1,5 +1,3 @@
-
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -22,10 +20,14 @@
 
 h1 { /* header ?*/
   padding: .77rem 0;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: .77em;
   background-color: #323a46;
   text-align: center;
   font-size: 1.88rem;
   color: #0080ff;
+  
 }
 
 h2 {
@@ -42,6 +44,7 @@ h2 {
   background-repeat: no-repeat;
   font-weight: 500;
   color: #fff;
+  justify-content: space-between;
 }
 .invest {
   text-align: center;
@@ -49,11 +52,16 @@ h2 {
 
 /* required so that the accounts take up a smaller portion of the screen*/
 .accounts {
-  max-width: 50%;
+  width: 60%;
+  display: inline-block;
+  text-align: center;
 }
-
+.Holdings {
+  width: 40%;
+  float: left;
+}
 .content {
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   padding:2%;
 
