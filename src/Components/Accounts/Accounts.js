@@ -7,7 +7,7 @@ class Accounts extends React.Component {
     super(props);
 
     this.state = {
-      accountId: 3
+      accountId: 3 //By default 3 accounts available
     }
 
     this.addAccount = this.addAccount.bind(this);
@@ -21,13 +21,8 @@ class Accounts extends React.Component {
     this.props.holdings.map(holding => {
       values[holding.name] = 0;
     });
-
-    // this.state.accountId = this.state.accountId + 1;
-    console.log(this.state.accountId);
     let newId = this.state.accountId + 1
     this.setState( {accountId: newId});
-    console.log(newId);
-
 
     let tempStock = {name: "New Account", values: values, id: newId};
 
@@ -39,7 +34,7 @@ class Accounts extends React.Component {
       <div className="Account">
         <h2 className="accountsTitle">Your Accounts</h2>
         <AccountsList accounts = {this.props.accounts} holdings = {this.props.holdings}
-        onRemove = {this.props.onRemove} onAmountChange = {this.props.onAmountChange}/>
+        onRemove = {this.props.onRemove} onAmountChange = {this.props.onAmountChange} onNameChange = {this.props.onNameChange}/>
         <button className="AccountsButton" onClick = {this.addAccount}>+</button>
       </div>
     );
