@@ -6,8 +6,13 @@ class Accounts extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      accountId: 3
+    }
+
     this.addAccount = this.addAccount.bind(this);
   }
+  
 
   //Handles a user adding a new account to their portfolio
   addAccount() {
@@ -17,7 +22,15 @@ class Accounts extends React.Component {
       values[holding.name] = 0;
     });
 
-    let tempStock = {name: "New Account", values: values};
+    // this.state.accountId = this.state.accountId + 1;
+    console.log(this.state.accountId);
+    let newId = this.state.accountId + 1
+    this.setState( {accountId: newId});
+    console.log(newId);
+
+
+    let tempStock = {name: "New Account", values: values, id: newId};
+
     this.props.onAdd(tempStock);
   }
 

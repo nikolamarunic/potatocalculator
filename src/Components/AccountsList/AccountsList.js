@@ -9,7 +9,7 @@ class AccountsList extends React.Component {
     return (
       <div className="AccountsList">
         {
-          this.props.accounts.map((account, i) => {
+          this.props.accounts.map((account, i) => { 
             return <Account account = {account} stocks = {this.props.holdings.map(holding => {return holding.name})}
             key = {`ren${i+1}`} onRemove = {this.props.onRemove} onAmountChange = {this.props.onAmountChange}/>
           })

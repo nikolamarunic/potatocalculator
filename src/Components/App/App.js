@@ -12,9 +12,9 @@ class App extends React.Component {
       holdings: [{ name: 'CDN-B', allocation: 20, id: 1 }, { name: 'CDN', allocation: 26, id: 2 },
       { name: 'USA', allocation: 27, id: 3 }, { name: 'INTL', allocation: 27, id: 4 }],
 
-      accounts: [{ name: 'CAD CASH', values: { 'CDN-B': 100, 'CDN': 200, 'USA': 300, 'INTL': 400 } },
-      { name: 'CAD TFSA', values: { 'CDN-B': 500, 'CDN': 600, 'USA': 700, 'INTL': 800 } },
-      { name: 'CAD RRSP', values: { 'CDN-B': 900, 'CDN': 1000, 'USA': 700, 'INTL': 1100 } }
+      accounts: [{ name: 'CAD CASH', values: { 'CDN-B': 100, 'CDN': 200, 'USA': 300, 'INTL': 400 }, id: 1 },
+      { name: 'CAD TFSA', values: { 'CDN-B': 500, 'CDN': 600, 'USA': 700, 'INTL': 800 }, id: 2 },
+      { name: 'CAD RRSP', values: { 'CDN-B': 900, 'CDN': 1000, 'USA': 700, 'INTL': 1100 }, id: 3 }
     ]
     };
     this.removeStock = this.removeStock.bind(this);
@@ -47,7 +47,7 @@ class App extends React.Component {
   addAccount(account) {
     let accounts = this.state.accounts;
 
-    if (accounts.find(savedAcc => savedAcc.name === account.name)) {
+    if (accounts.find(savedAcc => savedAcc.id === account.id)) {
       return; //Breaks out of the method if already found
     }
     accounts.push(account);

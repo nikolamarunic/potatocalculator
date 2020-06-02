@@ -21,6 +21,8 @@ class Account extends React.Component {
     this.props.onAmountChange(amountChange);
   }
 
+  
+
   renderAction() {
     return <button className="Account-action" onClick={this.removeAccount}>-</button>
   }
@@ -29,8 +31,8 @@ class Account extends React.Component {
     return (
       <div className="Account">
         <div className="accountTitle">
-          <h2>{this.props.account.name}</h2>
-          {/* <input key={this.props.key}  type= 'text' value = {this.props.account.name}></input> */}
+          {/* <h2>{this.props.account.name}</h2> */}
+          <input key={this.props.key}  type= 'text' value = {this.props.account.name}></input>
           </div>
         <div className="entries">
           {
