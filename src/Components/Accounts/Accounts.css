@@ -15,17 +15,20 @@
 }
 
 .AccountsButton {
-  cursor: pointer;
-  width: 8.11rem;
-  padding: .77rem 0;
-  border-radius: 54px;
-  background-color: #010c3f;
-  text-align: center;
-  font-size: .833rem;
+  align-items: left;
+  border: 1px solid rgba(256, 256, 256, 0.8);
+  font-size: 1em;
+  height: 4em; /* 7em and 14em might look better if not adding a line to the bottom*/
+  width: 16em;
+  background-color: white;
+  color: #0080ff;
+  border: 1px solid rgba(0, 128, 255, 0.3);
+  border-radius: 0.2em;
   transition: background-color .25s;
-  border: 0px;
-  color: #fff;
-  font-weight: 500;
+  
+  margin:1%;
+  cursor: pointer;
+  text-align: center;
 }
 
 .accountsTitle {
@@ -37,7 +40,7 @@
 }
 
 .AccountsButton:hover {
-  background-color: rgba(108, 65, 233, .7);
+  background-color:rgba(0, 128, 255, 0.3);
 }
 
 @media only screen and (max-width: 1020px) {

@@ -9,16 +9,19 @@
 
 .Account-action {
   cursor: pointer;
-  padding: .5rem;
   font-size: 1.05rem;
-  transition: color .25s;
+  transition: background-color .25s;
   border: 0px;
-  background-color: rgba(0, 0, 0, 0);
-  color: black;
+  background-color: #e6c6cd;
+  color: #e94568;
+  height: 1.75em;
+  width: 5em;
+  border-radius: 0.1em;
+  align-items: center;
 }
 
 .Account-action:hover {
-  color: rgba(265, 265, 265, .5);
+  background-color: #e96a85;
 }
 
 .Account-information {
@@ -32,7 +35,7 @@
 }
 
 .entries {
-  min-width: 101%;
+  min-width: 100%;
   overflow: scroll;
   text-align: center;
   justify-content: space-evenly;
@@ -42,7 +45,7 @@
   border: 0;
   text-align: center;
   outline: none;
-  font-size: 1.3em;
+  font-size: 2em;
   font-family: "Courier New", Courier, monospace;
   color:#6d757d;
   font-weight: 900;

@@ -16,6 +16,7 @@
   width: 16em;
   background-color: white;
   color: #0080ff;
+  border: 1px solid rgba(0, 128, 255, 0.3);
   border-radius: 0.2em;
   transition: background-color .25s;
   
@@ -28,5 +29,5 @@
 }
 
 .HoldingsButton:hover {
-  background-color: #dcdefe;
+  background-color:rgba(0, 128, 255, 0.3);;
 }
