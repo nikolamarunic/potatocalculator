@@ -1,35 +1,41 @@
 .AccountEntry {
   display: table-cell;
   align-items: center;
-  border-bottom: 1px solid rgba(256, 256, 256, 0.8);
-}
-
-.AccountEntry-action {
-  cursor: pointer;
-  padding: .5rem;
-  font-size: 1.05rem;
-  transition: color .25s;
-  border: 0px;
-  background-color: rgba(0, 0, 0, 0);
-  color: #fff;
-}
-
-.AccountEntry-action:hover {
-  color: rgba(265, 265, 265, .5);
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .AccountEntry-information {
   flex-grow: 1;
   flex-direction: row;
+
 }
 
 .value {
   text-align: center;
   float: right;
-  clear: both;
+  border: 1px solid black;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 3em;
+  border-radius: 0 0 .2em .2em;
+  font-size: 1.5vw;
+  width: 5em;
+  font-family: "Courier New", Courier, monospace;
+  color:#6d757d;
+  font-weight: 900;
+  
 }
 
 .name {
-  background-color: rgba(2, 114, 36, 0.836);
+  background-color: #323a46;
+  color: #0080ff;
+
+
+  opacity: 90%;
   border: 1px solid black;
+  padding-top: 0;
+  margin:0;
+  font-size: 1.5em;
+  border-radius: .2em .2em 0 0;
 }

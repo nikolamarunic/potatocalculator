@@ -1,4 +1,13 @@
 .AccountsList {
-  width: 100%;
+  width: 90%;
   text-align: center;
+  
 }
+ .Account {
+  background-color: white;
+  padding: 1em;
+  margin: 1em;
+  /* border: 1px solid #282c34; */
+  border-radius: .2em;
+
+ }

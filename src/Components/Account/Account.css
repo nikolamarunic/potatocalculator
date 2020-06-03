@@ -1,9 +1,10 @@
 .Account {
-  display: flex;
+  /* display: flex; */
   align-items: center;
-  border-bottom: 1px solid rgba(256, 256, 256, 0.8);
   display: block;
   width: 100%;
+
+
 }
 
 .Account-action {
@@ -25,10 +26,24 @@
   flex-direction: row;
 }
 
+.AccountEntry {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 .entries {
   min-width: 101%;
   overflow: scroll;
+  text-align: center;
+  justify-content: space-evenly;
+
 }
 .accountTitle {
-  border: 0px;
+  border: 0;
+  text-align: center;
+  outline: none;
+  font-size: 1.3em;
+  font-family: "Courier New", Courier, monospace;
+  color:#6d757d;
+  font-weight: 900;
 }

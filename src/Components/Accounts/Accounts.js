@@ -31,7 +31,7 @@ class Accounts extends React.Component {
 
   render() {
     return (
-      <div className="Account">
+      <div className="AccountHolder">
         <h2 className="accountsTitle">Your Accounts</h2>
         <AccountsList accounts = {this.props.accounts} holdings = {this.props.holdings}
         onRemove = {this.props.onRemove} onAmountChange = {this.props.onAmountChange} onNameChange = {this.props.onNameChange}/>

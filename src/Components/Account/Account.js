@@ -23,8 +23,8 @@ class Account extends React.Component {
   }
 
   handleNameChange(event) {
-    let newAcc = {name: this.props.account.name, id: this.props.account.id, values: this.props.account.values, newName: event.target.value};
-    this.setState({name: newAcc.newName});
+    let newAcc = { name: this.props.account.name, id: this.props.account.id, values: this.props.account.values, newName: event.target.value };
+    this.setState({ name: newAcc.newName });
     this.props.onNameChange(newAcc);
   }
 
@@ -37,14 +37,12 @@ class Account extends React.Component {
   render() {
     return (
       <div className="Account">
-        <div className="accountTitle">
-          {/* <h2>{this.props.account.name}</h2> */}
-          <input key={this.props.account.id}  type= 'text' value = {this.props.account.name} onChange={this.handleNameChange}></input>
-          </div>
+        {/* <h2>{this.props.account.name}</h2> */}
+        <input className="accountTitle" key={this.props.account.id} type='text' value={this.props.account.name} onChange={this.handleNameChange}></input>
         <div className="entries">
           {
             this.props.stocks.map((holding, i) => {
-              return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.account.values[holding]} handleAmountChange = {this.handleAmountChange}/>
+              return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.account.values[holding]} handleAmountChange={this.handleAmountChange} />
             })
           }
         </div>

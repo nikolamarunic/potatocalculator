@@ -1,14 +1,12 @@
-.Accounts {
+.Accounts.AccountHolder {
   width: 40%;
   align-items: center;
   overflow-y: scroll;
-  padding: .88rem;
-  background-color: rgba(50, 105, 0, 0.7);
-  outline: 1px solid black;
-  float: right;
-  display: table-cell;
+  padding: .88em;
+  padding-right: 2em;
   text-align: center;
-  
+  font-family: "Courier New", Courier, monospace;
+  color:#6d757d;
 }
 
 ::-webkit-scrollbar {
@@ -31,10 +29,11 @@
 }
 
 .accountsTitle {
-  font-family: "Courier New", Courier, monospace;
   font-size: 1.8em;
   font-weight: 3000;
   color:#6d757d;
+  font-family: "Courier New", Courier, monospace;
+  margin:0;
 }
 
 .AccountsButton:hover {
