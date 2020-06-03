@@ -131,19 +131,18 @@ class App extends React.Component {
     return (
       <div>
         <h1>PotatoCalculator</h1>
-        {/* <div className="content"> */}
+        <div className="leftContainer">
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
             handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
+          <Invest />
+        </div>
 
           <div className="accounts" >
             <Accounts holdings={this.state.holdings} accounts={this.state.accounts}
               onRemove={this.removeAccount} onAdd={this.addAccount} 
               onAmountChange={this.handleAccountAmountChange} onNameChange = {this.handleAccountNameChange}/>
           </div>
-        {/* </div> */}
-        <div className="invest">
-        <Invest />
-        </div>
+        
       </div>
     );
   }

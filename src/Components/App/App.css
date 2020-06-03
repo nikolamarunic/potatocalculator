@@ -46,9 +46,6 @@ h2 {
   color: #fff;
   justify-content: space-between;
 }
-.invest {
-  text-align: center;
-}
 
 /* required so that the accounts take up a smaller portion of the screen*/
 .accounts {
@@ -56,13 +53,20 @@ h2 {
   display: inline-block;
   text-align: center;
 }
-.Holdings {
+.leftContainer {
   width: 40%;
   float: left;
 }
+
+.Invest {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+}
+
 .content {
   /* display: flex; */
   justify-content: space-between;
   padding:2%;
-
 }

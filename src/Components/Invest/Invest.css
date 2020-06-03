@@ -1,24 +1,56 @@
 .Invest {
-  width: 40%;
+  width: 100%;
+  text-align: center;
   align-items: center;
   overflow-y: scroll;
-  padding: .88rem;
-  outline: 1px solid black;
-  display: table-cell;
+  display: inline-flex;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
+  
+}
+
+.investContent{
   text-align: center;
+  padding: .88rem;
+  margin: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: .2em;
+  background-color: white;
   
 }
 
 .Invest-action {
   cursor: pointer;
+  float: left;
   padding: .5rem;
+  margin:.5em;
   font-size: 1.05rem;
-  transition: color .25s;
-  border: 0px;
-  background-color: rgba(0, 0, 0, 0);
-  color: black;
+  transition: background-color .25s;
+  /* border: 1px solid rgba(32, 208, 155, 0.25); */
+  border:0px;
+  border-radius: 0.2em;
+  background-color: white;
+  color: #6d757d;
+  font-size: 1.75em;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
+  
 }
 
-.Account-action:hover {
-  color: rgba(265, 265, 265, .5);
+.Invest-action:hover {
+  background-color: rgba(32, 208, 155, 0.5);
+  -webkit-text-stroke: 1px #6d757d;
+}
+
+.investInput {
+  margin: .5em;
+  padding:0.5em;
+  width:10em;
+  height: 50%;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 900;
+  font-size: 1.5em;
+  color: #6d757d;
+  border: 0px;
+  border-bottom: 1px solid #6d757d;
 }

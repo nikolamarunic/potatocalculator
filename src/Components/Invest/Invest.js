@@ -13,14 +13,16 @@ class Invest extends React.Component {
   }
 
   renderAction() {
-    return <button className="Invest-action" onClick={this.invest}>Invest!</button>
+    return <button className="Invest-action" onClick={this.invest}>Invest! $</button>
   }
 
   render() {
     return (
       <div className="Invest">
-         {this.renderAction()}
-         <input key={this.key} type='number' className="value" onChange = {this.handleAmountChange}></input>
+        <div className="investContent">
+          {this.renderAction()}
+          <input key={this.key} type='number' className="investInput" onChange = {this.handleAmountChange}></input>
+         </div>
       </div>
     );
   }
