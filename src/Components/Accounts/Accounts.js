@@ -24,9 +24,9 @@ class Accounts extends React.Component {
     let newId = this.state.accountId + 1
     this.setState( {accountId: newId});
 
-    let tempStock = {name: "New Account", values: values, id: newId};
+    let tempAcc = {name: "New Account", values: values, id: newId, limit: -1};
 
-    this.props.onAdd(tempStock);
+    this.props.onAdd(tempAcc);
   }
 
   render() {
