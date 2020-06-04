@@ -132,12 +132,9 @@ class App extends React.Component {
   }
 
   handleInvest(amount) {
-    console.log(amount);
-    if (amount !== null) {  //cant use falsy since that doesnt include zero
-      console.log(amount);
+    if (amount !== null) {  //cant use falsy since that doesnt include zero. Might want zero for rebalance
       let newInvestment = Calculator.calculateInvestment(this.state.holdings, this.state.accounts, amount);
     }
-    
   }
 
   render() {
