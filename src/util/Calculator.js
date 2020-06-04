@@ -52,6 +52,43 @@ const Calculator = {
     });
     return holdingChanges
   },
+  allocateChanges(limitedAccounts, unlimitedAccounts, remainingChanges) {
+    //Want to prioritize the limited accounts, so add funds to them first
+    console.log(limitedAccounts);
+    console.log(unlimitedAccounts);
+    console.log(remainingChanges);
+
+    for (let i = 0; i < limitedAccounts.length; i++) {
+      let account = limitedAccounts[i];
+      Object.keys(remainingChanges).map(function (key){
+        if (remainingChanges[key] > 0) { 
+          //Generally want to add to these accounts and not sell
+          if (account.limit > remainingChanges[key]) { 
+            //Can add to the account
+            account[key] += remainingChanges[key];
+            account.limit -= remainingChanges[key];
+            remainingChanges[key] = 0;
+          } else {
+            //Cannot add all the funds to this specific account
+            remainingChanges[key] -= account.limit;
+            account[key] += account.limit;
+            account.limit = 0;
+            //Since we cannot add anymore funds to this account we can move to the next one early.
+            // break; Cant break early because of map
+          }
+        }
+      });
+    }
+    console.log(remainingChanges);
+    //Can add the remaining funds to the unlimited accounts
+    // for (let i = 0; i < unlimitedAccounts.length; i++) {
+    //   let account = unlimitedAccounts[i];
+
+    // }
+
+    return 0;
+
+  },
 
   calculateInvestment(holdings, accounts, amount) {
     //Want to contribute to limited accounts first (TFSA, RRSP...)
@@ -67,23 +104,26 @@ const Calculator = {
         unlimitedAccounts.push(account);
       }
     }
-    console.log(limitedAccounts);
-    console.log(unlimitedAccounts);
+    // console.log(limitedAccounts);
+    // console.log(unlimitedAccounts);
 
 
     //now want to calculate the actual and target values for each holding
     let compiledAmounts = this.getCompiledAmounts(holdings, accounts);
     let newTotal = compiledAmounts.total + amount;
-    console.log(compiledAmounts);
+    // console.log(compiledAmounts);
 
     let targetAmounts = this.calculateTargetAmounts(compiledAmounts, holdings, newTotal);
 
-    console.log(targetAmounts)
+    // console.log(targetAmounts);
 
     //Next want to calculate the change in each holding.
     let holdingChanges = this.calculateHoldingChanges(targetAmounts, compiledAmounts);
     console.log(holdingChanges);
 
+    //Finally want to allocate the changes to the accounts
+    let newAccounts = this.allocateChanges(limitedAccounts, unlimitedAccounts, holdingChanges);
+    console.log(newAccounts);
 
 
 
