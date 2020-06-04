@@ -31,6 +31,8 @@ class App extends React.Component {
 
     this.handleAccountNameChange = this.handleAccountNameChange.bind(this);
 
+    this.handleInvest = this.handleInvest.bind(this);
+
   }
 
   //Removes a stock from the user's portfolio. Will affect both the stock component and accounts component.
@@ -129,6 +131,15 @@ class App extends React.Component {
     this.setState({ holdings: stocks, accounts: accounts });
   }
 
+  handleInvest(amount) {
+    console.log(amount);
+    if (amount !== null) {  //cant use falsy since that doesnt include zero
+      console.log(amount);
+      let newInvestment = Calculator.calculateInvestment(this.state.holdings, this.state.accounts, amount);
+    }
+    
+  }
+
   render() {
     return (
       <div>
@@ -136,7 +147,7 @@ class App extends React.Component {
         <div className="leftContainer">
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
             handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
-          <Invest />
+          <Invest onInvest = {this.handleInvest}/>
         </div>
 
           <div className="accounts" >

@@ -1,10 +1,9 @@
 
-var token;
-const clientId = 'a2e06742b39746dbb93eb7c049414db1';
-const redirectUri = "http://localhost:3000/";
 
 const Calculator = {
-  
+  calculateInvestment(holdings, accounts, amount) {
+    return 0;
+  }
 }
 
 export default Calculator
