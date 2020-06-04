@@ -9,7 +9,6 @@ class Accounts extends React.Component {
     this.state = {
       accountId: 3 //By default 3 accounts available
     }
-
     this.addAccount = this.addAccount.bind(this);
   }
   
@@ -20,6 +19,7 @@ class Accounts extends React.Component {
     //By default have nothing invested in the account
     this.props.holdings.map(holding => {
       values[holding.name] = 0;
+      return 0;
     });
     let newId = this.state.accountId + 1
     this.setState( {accountId: newId});
