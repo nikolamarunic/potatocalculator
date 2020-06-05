@@ -3,6 +3,7 @@
   align-items: center;
   padding-left: 1em;
   padding-right: 1em;
+  
 }
 
 /* .Account-information {
@@ -19,11 +20,12 @@
   height: 3em;
   border-radius: 0 0 .2em .2em;
   font-size: 1.5vw;
-  width: 4.1em;
   background-color: #f7f9fc;
   font-family: "Courier New", Courier, monospace;
   color:#6d757d;
   font-weight: 900;
+  width: 5.5em;
+
 
 }
 

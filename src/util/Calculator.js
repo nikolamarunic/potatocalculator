@@ -52,6 +52,7 @@ const Calculator = {
     });
     return holdingChanges
   },
+  
   allocateChanges(limitedAccounts, unlimitedAccounts, remainingChanges) {
     //Want to prioritize the limited accounts, so add funds to them first
 
@@ -106,10 +107,11 @@ const Calculator = {
 
 
   //Handles cases where there were stocks that were needed to be sold but not sold.
-  handleErrors(accounts, remainingChanges, holdings) {
+  handleErrors(accounts, remainingChanges) {
     let needToSell = 0;
     Object.keys(remainingChanges).map(function (key) {
       needToSell += remainingChanges[key];
+      return 0;
     });
 
     if (needToSell !== 0) {
@@ -164,7 +166,7 @@ const Calculator = {
     // console.log(newAccounts);
 
     //Need to check and handle any changes that did not go through (i.e. couldnt sell enough stock)
-    let handledAccounts = this.handleErrors(newAccounts, holdingChanges, holdings);
+    let handledAccounts = this.handleErrors(newAccounts, holdingChanges);
     // console.log(handledAccounts);
 
     return handledAccounts;
