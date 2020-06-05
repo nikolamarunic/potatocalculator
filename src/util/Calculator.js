@@ -79,15 +79,27 @@ const Calculator = {
         }
       });
     }
+
     console.log(remainingChanges);
     //Can add the remaining funds to the unlimited accounts
-    // for (let i = 0; i < unlimitedAccounts.length; i++) {
-    //   let account = unlimitedAccounts[i];
-
-    // }
-
-    return 0;
-
+    for (let i = 0; i < unlimitedAccounts.length; i++) {
+      let account = unlimitedAccounts[i];
+      Object.keys(remainingChanges).map(function (key){
+        if (remainingChanges[key] < 0) {
+          //Selling holdings
+          if (Math.abs(remainingChanges[key]) > account[key]) {
+            //Need to sell more than is available in account
+            remainingChanges[key] += account[key];
+            account[key] = 0;
+          } else {
+            //Buying holdings
+            account[key] += remainingChanges[key];
+            remainingChanges[key] = 0;
+          }
+        }
+      });
+    }
+    return remainingChanges;
   },
 
   calculateInvestment(holdings, accounts, amount) {
