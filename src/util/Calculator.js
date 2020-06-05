@@ -7,7 +7,7 @@ const Calculator = {
   },
 
   //rounds to two decimal places if necessary
-  roundTo(num) {
+  round(num) {
     return (Math.round((num + Number.EPSILON) * 100) / 100);
   },
 
@@ -35,7 +35,7 @@ const Calculator = {
     Object.keys(compiledAmounts).map(function (key) {
       let holding = holdings.find(stock => stock.name === key);
       if (holding) {
-        targetAmounts[key] = Calculator.roundTo(total * (holding.allocation / 100));
+        targetAmounts[key] = Calculator.round(total * (holding.allocation / 100));
       }
       return 0;
     });
@@ -47,7 +47,7 @@ const Calculator = {
   calculateHoldingChanges(targetAmounts, compiledAmounts) {
     let holdingChanges = {}
     Object.keys(targetAmounts).map(function (key) {
-      holdingChanges[key] = Calculator.roundTo(targetAmounts[key] - compiledAmounts[key]);
+      holdingChanges[key] = Calculator.round(targetAmounts[key] - compiledAmounts[key]);
       return 0;
     });
     return holdingChanges
@@ -60,23 +60,27 @@ const Calculator = {
 
     for (let i = 0; i < limitedAccounts.length; i++) {
       let account = limitedAccounts[i];
+      if (account.limit === 0) {
+        break;
+      }
       Object.keys(remainingChanges).map(function (key){
         if (remainingChanges[key] > 0) { 
           //Generally want to add to these accounts and not sell
           if (account.limit > remainingChanges[key]) { 
             //Can add to the account
-            account[key] += remainingChanges[key];
+            account.values[key] += remainingChanges[key];
             account.limit -= remainingChanges[key];
             remainingChanges[key] = 0;
           } else {
             //Cannot add all the funds to this specific account
             remainingChanges[key] -= account.limit;
-            account[key] += account.limit;
+            account.values[key] += account.limit;
             account.limit = 0;
             //Since we cannot add anymore funds to this account we can move to the next one early.
             // break; Cant break early because of map
           }
         }
+        return 0;
       });
     }
 
@@ -85,21 +89,20 @@ const Calculator = {
     for (let i = 0; i < unlimitedAccounts.length; i++) {
       let account = unlimitedAccounts[i];
       Object.keys(remainingChanges).map(function (key){
-        if (remainingChanges[key] < 0) {
-          //Selling holdings
-          if (Math.abs(remainingChanges[key]) > account[key]) {
-            //Need to sell more than is available in account
-            remainingChanges[key] += account[key];
-            account[key] = 0;
-          } else {
-            //Buying holdings
-            account[key] += remainingChanges[key];
-            remainingChanges[key] = 0;
-          }
+        if (remainingChanges[key] < 0 && (Math.abs(remainingChanges[key]) > account.values[key])) {
+          //Need to sell more than is available in account
+          remainingChanges[key] += account.values[key];
+          account.values[key] = 0;
+        } else {
+          //Buying holdings OR selling a possible amount
+          account.values[key] += remainingChanges[key];
+          remainingChanges[key] = 0;
         }
+        return 0;
       });
     }
-    return remainingChanges;
+    console.log(remainingChanges);
+    return (unlimitedAccounts.concat(limitedAccounts));
   },
 
   calculateInvestment(holdings, accounts, amount) {
@@ -116,9 +119,6 @@ const Calculator = {
         unlimitedAccounts.push(account);
       }
     }
-    // console.log(limitedAccounts);
-    // console.log(unlimitedAccounts);
-
 
     //now want to calculate the actual and target values for each holding
     let compiledAmounts = this.getCompiledAmounts(holdings, accounts);
