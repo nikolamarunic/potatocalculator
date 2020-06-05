@@ -54,19 +54,16 @@ const Calculator = {
   },
   allocateChanges(limitedAccounts, unlimitedAccounts, remainingChanges) {
     //Want to prioritize the limited accounts, so add funds to them first
-    console.log(limitedAccounts);
-    console.log(unlimitedAccounts);
-    console.log(remainingChanges);
 
     for (let i = 0; i < limitedAccounts.length; i++) {
       let account = limitedAccounts[i];
       if (account.limit === 0) {
         break;
       }
-      Object.keys(remainingChanges).map(function (key){
-        if (remainingChanges[key] > 0) { 
+      Object.keys(remainingChanges).map(function (key) {
+        if (remainingChanges[key] > 0) {
           //Generally want to add to these accounts and not sell
-          if (account.limit > remainingChanges[key]) { 
+          if (account.limit > remainingChanges[key]) {
             //Can add to the account
             account.values[key] += remainingChanges[key];
             account.limit -= remainingChanges[key];
@@ -83,12 +80,12 @@ const Calculator = {
         return 0;
       });
     }
-
     console.log(remainingChanges);
+
     //Can add the remaining funds to the unlimited accounts
     for (let i = 0; i < unlimitedAccounts.length; i++) {
       let account = unlimitedAccounts[i];
-      Object.keys(remainingChanges).map(function (key){
+      Object.keys(remainingChanges).map(function (key) {
         if (remainingChanges[key] < 0 && (Math.abs(remainingChanges[key]) > account.values[key])) {
           //Need to sell more than is available in account
           remainingChanges[key] += account.values[key];
@@ -98,11 +95,40 @@ const Calculator = {
           account.values[key] += remainingChanges[key];
           remainingChanges[key] = 0;
         }
+        remainingChanges[key] = Calculator.round(remainingChanges[key]); //want nice round numbers
         return 0;
       });
     }
     console.log(remainingChanges);
+
     return (unlimitedAccounts.concat(limitedAccounts));
+  },
+
+
+  //Handles cases where there were stocks that were needed to be sold but not sold.
+  handleErrors(accounts, remainingChanges, holdings) {
+    let needToSell = 0;
+    Object.keys(remainingChanges).map(function (key) {
+      needToSell += remainingChanges[key];
+    });
+
+    if (needToSell !== 0) {
+      // Want to redistribute
+      for (let i = 0; i < accounts.length; i++) {
+        let account = accounts[i];
+        Object.keys(account.values).map(function (key) {
+          if (account.values[key] + needToSell >= 0) {
+            account.values[key] += needToSell;
+            needToSell = 0;
+          } else {
+            needToSell += account.values[key];
+            account.values[key] = 0;
+          }
+        });
+      }
+    }
+    // console.log(needToSell);
+    return accounts;
   },
 
   calculateInvestment(holdings, accounts, amount) {
@@ -131,15 +157,17 @@ const Calculator = {
 
     //Next want to calculate the change in each holding.
     let holdingChanges = this.calculateHoldingChanges(targetAmounts, compiledAmounts);
-    console.log(holdingChanges);
+    // console.log(holdingChanges);
 
     //Finally want to allocate the changes to the accounts
     let newAccounts = this.allocateChanges(limitedAccounts, unlimitedAccounts, holdingChanges);
-    console.log(newAccounts);
+    // console.log(newAccounts);
 
+    //Need to check and handle any changes that did not go through (i.e. couldnt sell enough stock)
+    let handledAccounts = this.handleErrors(newAccounts, holdingChanges, holdings);
+    // console.log(handledAccounts);
 
-
-
+    return handledAccounts;
 
   }
 }
