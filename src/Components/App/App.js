@@ -59,12 +59,22 @@ class App extends React.Component {
   //Handles when a user adds a new account to their portfolio
   addAccount(account) {
     let accounts = this.state.accounts;
+    let changes = this.state.changes;
 
     if (accounts.find(savedAcc => savedAcc.id === account.id)) {
       return; //Breaks out of the method if already found
     }
     accounts.push(account);
     this.setState({ accounts: accounts });
+    //Initialize changes in account to zero
+    Object.keys(account.values).map( function(key){
+      account.values[key] = 0;
+      return 0;
+    });
+    changes.push(account);
+    this.setState({ changes: changes });
+
+
   }
 
   //Handles when a user changes the amount invested in a fund in an account.
