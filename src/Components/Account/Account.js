@@ -61,7 +61,8 @@ class Account extends React.Component {
           <div className="entries">
             {
               this.props.stocks.map((holding, i) => {
-                return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.changes.values[holding]} handleAmountChange={this.handleAmountChange} />
+                return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.changes.values[holding]} 
+                handleAmountChange={this.handleAmountChange} isChange = {true}/>
               })
             }
           </div>
@@ -80,7 +81,8 @@ class Account extends React.Component {
         <div className="entries">
           {
             this.props.stocks.map((holding, i) => {
-              return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.account.values[holding]} handleAmountChange={this.handleAmountChange} />
+              return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.account.values[holding]} 
+              handleAmountChange={this.handleAmountChange} isChange = {false}/>
             })
           }
         </div>
