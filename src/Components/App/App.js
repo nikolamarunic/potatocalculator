@@ -17,6 +17,11 @@ class App extends React.Component {
       accounts: [{ name: 'CAD CASH', values: { 'CDN-B': 100, 'CDN': 200, 'USA': 300, 'INTL': 200 }, id: 1, limit: -1 },
       { name: 'CAD TFSA', values: { 'CDN-B': 500, 'CDN': 600, 'USA': 700, 'INTL': 400 }, id: 2, limit: 0 },
       { name: 'CAD RRSP', values: { 'CDN-B': 900, 'CDN': 1000, 'USA': 700, 'INTL': 1700 }, id: 3, limit: 0 }
+    ],
+    changes: [
+      { name: 'CAD CASH', values: { 'CDN-B': 100, 'CDN': 200, 'USA': 300, 'INTL': 200 }, id: 1, limit: -1 },
+      { name: 'CAD TFSA', values: { 'CDN-B': 500, 'CDN': 600, 'USA': 700, 'INTL': 400 }, id: 2, limit: 0 },
+      { name: 'CAD RRSP', values: { 'CDN-B': 900, 'CDN': 1000, 'USA': 700, 'INTL': 1700 }, id: 3, limit: 0 }
     ]
     };
     this.removeStock = this.removeStock.bind(this);
@@ -135,8 +140,8 @@ class App extends React.Component {
     if (amount !== null) {  //cant use falsy since that doesnt include zero. Might want zero for rebalance
       let newInvestment = Calculator.calculateInvestment(this.state.holdings, this.state.accounts, amount);
       let newValues = newInvestment[0];
-      let changes = newInvestment[1]
-      this.setState({ accounts: newValues});
+      let changes = newInvestment[1];
+      this.setState({ accounts: newValues, changes: changes});
     }
   }
 
@@ -151,7 +156,7 @@ class App extends React.Component {
         </div>
 
           <div className="accounts" >
-            <Accounts holdings={this.state.holdings} accounts={this.state.accounts}
+            <Accounts holdings={this.state.holdings} accounts={this.state.accounts} changes = {this.state.changes}
               onRemove={this.removeAccount} onAdd={this.addAccount} 
               onAmountChange={this.handleAccountAmountChange} onNameChange = {this.handleAccountNameChange}/>
           </div>

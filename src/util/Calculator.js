@@ -139,7 +139,7 @@ const Calculator = {
       currDifferences.values = {};
 
       Object.keys(originalAccounts[i].values).map(function (key) {
-        currDifferences.values[key] = newAccounts[i].values[key] - originalAccounts[i].values[key];
+        currDifferences.values[key] = Calculator.round(newAccounts[i].values[key] - originalAccounts[i].values[key]);
       });
       // console.log(currDifferences);
       differences.push(currDifferences);

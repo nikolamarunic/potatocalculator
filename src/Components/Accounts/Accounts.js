@@ -33,7 +33,7 @@ class Accounts extends React.Component {
     return (
       <div className="AccountHolder">
         <h2 className="accountsTitle">Your Accounts</h2>
-        <AccountsList accounts = {this.props.accounts} holdings = {this.props.holdings}
+        <AccountsList accounts = {this.props.accounts} holdings = {this.props.holdings} changes = {this.props.changes}
         onRemove = {this.props.onRemove} onAmountChange = {this.props.onAmountChange} onNameChange = {this.props.onNameChange}/>
         <button className="AccountsButton" onClick = {this.addAccount}>+</button>
       </div>
