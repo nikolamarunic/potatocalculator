@@ -59,15 +59,7 @@ class Account extends React.Component {
   render() {
     //if burgerOpen then we are editing the maximum addition to account value/seeing the changes
     if (this.state.burgerOpen) {
-      return (
-        <div className="Account">
-          <div className="accountHeader">
-            <input className="accountMax" key={`max${this.props.account.id}`} type='number' value={this.props.account.limit} onChange={this.handleLimitChange}></input>
-            <input className="accountTitle" key={this.props.account.id} type='text' value={this.props.account.name} onChange={this.handleNameChange}></input>
-            <HamburgerMenu
-              isOpen={this.state.burgerOpen}
-              menuClicked={this.handleBurgerClick.bind(this)} color="#6d757d" className="burgerButton" />
-          </div>
+      var entries =
           <div className="entries">
             {
               this.props.stocks.map((holding, i) => {
@@ -76,18 +68,8 @@ class Account extends React.Component {
               })
             }
           </div>
-          {this.renderAction()}
-        </div>
-      );
-    }
-    return (
-      <div className="Account">
-        <div className="accountHeader">
-          <input className="accountTitle" key={this.props.account.id} type='text' value={this.props.account.name} onChange={this.handleNameChange}></input>
-          <HamburgerMenu
-            isOpen={this.state.burgerOpen}
-            menuClicked={this.handleBurgerClick.bind(this)} color="#6d757d" className="burgerButton" />
-        </div>
+    } else {
+      var entries =
         <div className="entries">
           {
             this.props.stocks.map((holding, i) => {
@@ -96,6 +78,20 @@ class Account extends React.Component {
             })
           }
         </div>
+
+    }
+    
+    
+    return (
+      <div className="Account">
+        <div className="accountHeader">
+          <input className="accountMax" key={`max${this.props.account.id}`} type='number' value={this.props.account.limit} onChange={this.handleLimitChange}></input>
+          <input className="accountTitle" key={this.props.account.id} type='text' value={this.props.account.name} onChange={this.handleNameChange}></input>
+          <HamburgerMenu
+            isOpen={this.state.burgerOpen}
+            menuClicked={this.handleBurgerClick.bind(this)} color="#6d757d" className="burgerButton" />
+        </div>
+        {entries}
         {this.renderAction()}
       </div>
     );
