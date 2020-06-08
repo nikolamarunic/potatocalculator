@@ -134,7 +134,9 @@ class App extends React.Component {
   handleInvest(amount) {
     if (amount !== null) {  //cant use falsy since that doesnt include zero. Might want zero for rebalance
       let newInvestment = Calculator.calculateInvestment(this.state.holdings, this.state.accounts, amount);
-      this.setState({ accounts: newInvestment});
+      let newValues = newInvestment[0];
+      let changes = newInvestment[1]
+      this.setState({ accounts: newValues});
     }
   }
 

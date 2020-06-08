@@ -52,7 +52,6 @@ const Calculator = {
     });
     return holdingChanges
   },
-  
   allocateChanges(limitedAccounts, unlimitedAccounts, remainingChanges) {
     //Want to prioritize the limited accounts, so add funds to them first
 
@@ -81,7 +80,7 @@ const Calculator = {
         return 0;
       });
     }
-    console.log(remainingChanges);
+    // console.log(remainingChanges);
 
     //Can add the remaining funds to the unlimited accounts
     for (let i = 0; i < unlimitedAccounts.length; i++) {
@@ -100,7 +99,7 @@ const Calculator = {
         return 0;
       });
     }
-    console.log(remainingChanges);
+    // console.log(remainingChanges);
 
     return (unlimitedAccounts.concat(limitedAccounts));
   },
@@ -132,10 +131,26 @@ const Calculator = {
     // console.log(needToSell);
     return accounts;
   },
+  calculateFinalDifferences(originalAccounts, newAccounts) {
+    let differences = [];
+    for (let i = 0; i < originalAccounts.length; i++) {
+      let currDifferences = {};
+      currDifferences.name = originalAccounts[i].name;
+      currDifferences.values = {};
+
+      Object.keys(originalAccounts[i].values).map(function (key) {
+        currDifferences.values[key] = newAccounts[i].values[key] - originalAccounts[i].values[key];
+      });
+      // console.log(currDifferences);
+      differences.push(currDifferences);
+    }
+    return differences;
+  },
 
   calculateInvestment(holdings, accounts, amount) {
     //Want to contribute to limited accounts first (TFSA, RRSP...)
     //So we should make the distinction b/w them.
+    const accountCopy = JSON.parse(JSON.stringify(accounts)); //Deepcopy of accounts
     let limitedAccounts = [];
     let unlimitedAccounts = [];
 
@@ -168,8 +183,11 @@ const Calculator = {
     //Need to check and handle any changes that did not go through (i.e. couldnt sell enough stock)
     let handledAccounts = this.handleErrors(newAccounts, holdingChanges);
     // console.log(handledAccounts);
+    // console.log(accountCopy);
 
-    return handledAccounts;
+    let finalDifferences = this.calculateFinalDifferences(accountCopy, handledAccounts);
+
+    return [handledAccounts, finalDifferences];
 
   }
 }

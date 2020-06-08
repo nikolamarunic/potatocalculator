@@ -48,6 +48,21 @@ class Account extends React.Component {
   }
 
   render() {
+    //if burgerOpen then we are editing the maximum addition to account value
+    if (this.state.burgerOpen) {
+      return (
+        <div className="Account">
+          {/* <h2>{this.props.account.name}</h2> */}
+          <div className="accountHeader">
+            <input className="accountTitle" key={this.props.account.id} type='text' value={this.props.account.name} onChange={this.handleNameChange}></input>
+            <HamburgerMenu
+              isOpen={this.state.burgerOpen}
+              menuClicked={this.handleBurgerClick.bind(this)} color="#6d757d" className="burgerButton" />
+          </div>
+          {this.renderAction()}
+        </div>
+      );
+    }
     return (
       <div className="Account">
         {/* <h2>{this.props.account.name}</h2> */}
@@ -55,7 +70,7 @@ class Account extends React.Component {
           <input className="accountTitle" key={this.props.account.id} type='text' value={this.props.account.name} onChange={this.handleNameChange}></input>
           <HamburgerMenu
             isOpen={this.state.burgerOpen}
-            menuClicked={this.handleBurgerClick.bind(this)} color="#6d757d" className = "burgerButton"/>
+            menuClicked={this.handleBurgerClick.bind(this)} color="#6d757d" className="burgerButton" />
         </div>
         <div className="entries">
           {
