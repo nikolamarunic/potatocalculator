@@ -2,13 +2,20 @@ import React from 'react';
 import './Account.css';
 
 import AccountEntry from '../AccountEntry/AccountEntry';
+import HamburgerMenu from '../../../node_modules/react-hamburger-menu/dist/HamburgerMenu';
+
 
 class Account extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      burgerOpen: false
+    };
+
     this.removeAccount = this.removeAccount.bind(this);
     this.handleAmountChange = this.handleAmountChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleBurgerClick = this.handleBurgerClick.bind(this);
   }
 
   //Handles a user deleting their account
@@ -28,6 +35,12 @@ class Account extends React.Component {
     this.props.onNameChange(newAcc);
   }
 
+  handleBurgerClick() {
+    this.setState({
+      burgerOpen: !this.state.burgerOpen
+    });
+  }
+
 
 
   renderAction() {
@@ -38,7 +51,12 @@ class Account extends React.Component {
     return (
       <div className="Account">
         {/* <h2>{this.props.account.name}</h2> */}
-        <input className="accountTitle" key={this.props.account.id} type='text' value={this.props.account.name} onChange={this.handleNameChange}></input>
+        <div className="accountHeader">
+          <input className="accountTitle" key={this.props.account.id} type='text' value={this.props.account.name} onChange={this.handleNameChange}></input>
+          <HamburgerMenu
+            isOpen={this.state.burgerOpen}
+            menuClicked={this.handleBurgerClick.bind(this)} color="#6d757d" className = "burgerButton"/>
+        </div>
         <div className="entries">
           {
             this.props.stocks.map((holding, i) => {

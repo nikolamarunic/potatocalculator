@@ -6,6 +6,10 @@
 
 
 }
+.burgerButton {
+  float: right;
+  cursor: pointer;
+}
 
 .Account-action {
   cursor: pointer;
