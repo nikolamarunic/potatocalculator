@@ -1,3 +1,6 @@
-A web app for calculating investments based on the Canadian Couch Potato model.
+A web app for managing a stock portfolio, inspired by the Canadian Couch Potato model.
+
+Dependancies:
+npm install --save react-hamburger-menu
 
 
