@@ -17,12 +17,12 @@ class App extends React.Component {
       accounts: [{ name: 'CAD CASH', values: { 'CDN-B': 100, 'CDN': 200, 'USA': 300, 'INTL': 200 }, id: 1, limit: -1 },
       { name: 'CAD TFSA', values: { 'CDN-B': 500, 'CDN': 600, 'USA': 700, 'INTL': 400 }, id: 2, limit: 0 },
       { name: 'CAD RRSP', values: { 'CDN-B': 900, 'CDN': 1000, 'USA': 700, 'INTL': 1700 }, id: 3, limit: 0 }
-    ],
-    changes: [
-      { name: 'CAD CASH', values: { 'CDN-B': 0, 'CDN': 0, 'USA': 0, 'INTL': 0 }},
-      { name: 'CAD TFSA', values: { 'CDN-B': 0, 'CDN': 0, 'USA': 0, 'INTL': 0 }},
-      { name: 'CAD RRSP', values: { 'CDN-B': 0, 'CDN': 0, 'USA': 0, 'INTL': 0 }},
-    ]
+      ],
+      changes: [
+        { name: 'CAD CASH', values: { 'CDN-B': 0, 'CDN': 0, 'USA': 0, 'INTL': 0 } },
+        { name: 'CAD TFSA', values: { 'CDN-B': 0, 'CDN': 0, 'USA': 0, 'INTL': 0 } },
+        { name: 'CAD RRSP', values: { 'CDN-B': 0, 'CDN': 0, 'USA': 0, 'INTL': 0 } },
+      ]
     };
     this.removeStock = this.removeStock.bind(this);
     this.removeAccount = this.removeAccount.bind(this);
@@ -37,6 +37,8 @@ class App extends React.Component {
     this.handleAccountNameChange = this.handleAccountNameChange.bind(this);
 
     this.handleInvest = this.handleInvest.bind(this);
+
+    this.handleLimitChange = this.handleLimitChange.bind(this);
 
   }
 
@@ -84,7 +86,7 @@ class App extends React.Component {
     let currAcc = accounts.find(savedAcc => savedAcc.name === oldName);
     currAcc.name = newName;
 
-    this.setState({accounts: accounts});
+    this.setState({ accounts: accounts });
 
   }
 
@@ -141,8 +143,21 @@ class App extends React.Component {
       let newInvestment = Calculator.calculateInvestment(this.state.holdings, this.state.accounts, amount);
       let newValues = newInvestment[0];
       let changes = newInvestment[1];
-      this.setState({ accounts: newValues, changes: changes});
+      this.setState({ accounts: newValues, changes: changes });
     }
+  }
+  handleLimitChange(newAcc) {
+    let accounts = this.state.accounts;
+    console.log(newAcc);
+    console.log(accounts);
+    let currAcc = accounts.find(savedAcc => savedAcc.id === newAcc.id);
+
+    if (currAcc) {
+      currAcc.limit = newAcc.limit;
+
+      this.setState({ accounts: accounts });
+    }
+
   }
 
   render() {
@@ -152,15 +167,15 @@ class App extends React.Component {
         <div className="leftContainer">
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
             handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
-          <Invest onInvest = {this.handleInvest}/>
+          <Invest onInvest={this.handleInvest} />
         </div>
 
-          <div className="accounts" >
-            <Accounts holdings={this.state.holdings} accounts={this.state.accounts} changes = {this.state.changes}
-              onRemove={this.removeAccount} onAdd={this.addAccount} 
-              onAmountChange={this.handleAccountAmountChange} onNameChange = {this.handleAccountNameChange}/>
-          </div>
-        
+        <div className="accounts" >
+          <Accounts holdings={this.state.holdings} accounts={this.state.accounts} changes={this.state.changes}
+            onRemove={this.removeAccount} onAdd={this.addAccount} onNewLimit={this.handleLimitChange}
+            onAmountChange={this.handleAccountAmountChange} onNameChange={this.handleAccountNameChange} />
+        </div>
+
       </div>
     );
   }

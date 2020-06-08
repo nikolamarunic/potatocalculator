@@ -32,14 +32,13 @@ class AccountEntry extends React.Component {
         textColour = '#e76882'; //red
       }
     }
-    console.log(textColour);
-    
+
     return (
       <div className="AccountEntry">
         <div className="Account-information">
           <h4 type='text' className="name">{this.props.name}</h4>
           <input key={this.key} type='number' value={this.props.value} className="value" onChange={this.handleAmountChange}
-          style={{color: textColour}}></input>
+            style={{ color: textColour }}></input>
         </div>
       </div>
     );

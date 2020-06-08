@@ -9,13 +9,15 @@ class Account extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      burgerOpen: false
+      burgerOpen: false,
+      limit: this.props.account.limit
     };
 
     this.removeAccount = this.removeAccount.bind(this);
     this.handleAmountChange = this.handleAmountChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleBurgerClick = this.handleBurgerClick.bind(this);
+    this.handleLimitChange = this.handleLimitChange.bind(this);
   }
 
   //Handles a user deleting their account
@@ -41,6 +43,13 @@ class Account extends React.Component {
     });
   }
 
+  handleLimitChange(event) {
+    let newLimit = Number(event.target.value);
+    this.setState({ limit: newLimit });
+    let newAcc = { name: this.props.account.name, values: this.props.account.values, id: this.props.account.id, limit: newLimit };
+    this.props.onNewLimit(newAcc);
+  }
+
 
 
   renderAction() {
@@ -53,6 +62,7 @@ class Account extends React.Component {
       return (
         <div className="Account">
           <div className="accountHeader">
+            <input className="accountMax" key={`max${this.props.account.id}`} type='number' value={this.props.account.limit} onChange={this.handleLimitChange}></input>
             <input className="accountTitle" key={this.props.account.id} type='text' value={this.props.account.name} onChange={this.handleNameChange}></input>
             <HamburgerMenu
               isOpen={this.state.burgerOpen}
@@ -61,8 +71,8 @@ class Account extends React.Component {
           <div className="entries">
             {
               this.props.stocks.map((holding, i) => {
-                return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.changes.values[holding]} 
-                handleAmountChange={this.handleAmountChange} isChange = {true}/>
+                return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.changes.values[holding]}
+                  handleAmountChange={this.handleAmountChange} isChange={true} />
               })
             }
           </div>
@@ -81,8 +91,8 @@ class Account extends React.Component {
         <div className="entries">
           {
             this.props.stocks.map((holding, i) => {
-              return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.account.values[holding]} 
-              handleAmountChange={this.handleAmountChange} isChange = {false}/>
+              return <AccountEntry name={holding} key={`ent${i + 1}`} value={this.props.account.values[holding]}
+                handleAmountChange={this.handleAmountChange} isChange={false} />
             })
           }
         </div>

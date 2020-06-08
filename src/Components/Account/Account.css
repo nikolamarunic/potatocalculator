@@ -3,9 +3,18 @@
   align-items: center;
   display: block;
   width: 100%;
-
-
 }
+.accountMax {
+  float: left;
+  outline: none;
+  border: none;
+  font-size: 2em;
+  font-family: "Courier New", Courier, monospace;
+  color:#6d757d;
+  font-weight: 900;
+  max-width: 6em;
+}
+
 .burgerButton {
   float: right;
   cursor: pointer;
