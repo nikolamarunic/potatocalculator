@@ -5,7 +5,9 @@ import App from './Components/App/App';
 import * as serviceWorker from './serviceWorker';
 import Amplify from "aws-amplify";
 import awsExports from "./aws-exports";
+import config from './aws-exports';
 Amplify.configure(awsExports);
+Amplify.configure(config);
 
 ReactDOM.render(
   <React.StrictMode>

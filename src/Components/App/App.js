@@ -7,6 +7,7 @@ import Calculator from '../../util/Calculator';
 
 import { API, graphqlOperation } from 'aws-amplify'
 import { withAuthenticator } from '@aws-amplify/ui-react'
+import { Auth } from 'aws-amplify'
 
 
 
@@ -178,6 +179,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>PotatoCalculator</h1>
+        <button onClick={() => Auth.federatedSignIn()}>Sign In</button>
         <div className="leftContainer">
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
             handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
@@ -195,4 +197,4 @@ class App extends React.Component {
   }
 }
 
-export default withAuthenticator(App);
+export default App;

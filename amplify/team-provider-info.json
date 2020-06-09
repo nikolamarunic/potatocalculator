@@ -13,7 +13,9 @@
         },
         "categories": {
             "auth": {
-                "potatocalculator7abcb48a": {}
+                "potatocalculator7abcb48a": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"648562989207589\",\"client_secret\":\"90a2b47b143db97fdfaec0645fddcc61\"},{\"ProviderName\":\"Google\",\"client_id\":\"289530412360-t81q6gb4ejr4as7gso0t44blk7fe7fps.apps.googleusercontent.com\",\"client_secret\":\"95Tt8UwJ2A7_HEOzxGUWxekk\"}]"
+                }
             }
         }
     }
