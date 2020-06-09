@@ -1,0 +1,35 @@
+type Task 
+  @model 
+  @auth(rules: [
+      {allow: groups, groups: ["Users"], queries: [get, list], mutations: [create, update, delete]},
+    ])
+{
+  id: ID!
+  title: String!
+  description: String
+  status: String
+}
+
+type Holding
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  name: String!
+  value: Float!
+}
+type Account
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  name: String!
+  values: [Holding!]!
+  limit: Float!
+  id: ID!
+}
+type Change
+  @model
+  @auth(rules: [{allow: owner}])
+{
+  name: String!
+  values: [Holding!]!
+}

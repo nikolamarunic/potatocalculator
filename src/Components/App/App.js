@@ -5,6 +5,10 @@ import Accounts from '../Accounts/Accounts';
 import Invest from '../Invest/Invest';
 import Calculator from '../../util/Calculator';
 
+import { API, graphqlOperation } from 'aws-amplify'
+import { withAuthenticator } from '@aws-amplify/ui-react'
+
+
 
 
 class App extends React.Component {
@@ -191,4 +195,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuthenticator(App);

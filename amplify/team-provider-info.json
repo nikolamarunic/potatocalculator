@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-potatocalculator-dev-104301-authRole",
+            "UnauthRoleArn": "arn:aws:iam::230628862604:role/amplify-potatocalculator-dev-104301-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::230628862604:role/amplify-potatocalculator-dev-104301-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-potatocalculator-dev-104301-deployment",
+            "UnauthRoleName": "amplify-potatocalculator-dev-104301-unauthRole",
+            "StackName": "amplify-potatocalculator-dev-104301",
+            "StackId": "arn:aws:cloudformation:us-east-2:230628862604:stack/amplify-potatocalculator-dev-104301/86632140-aa5f-11ea-80a9-064ea827a74e",
+            "AmplifyAppId": "d2mtri6axc17pm"
+        },
+        "categories": {
+            "auth": {
+                "potatocalculator7abcb48a": {}
+            }
+        }
+    }
+}
