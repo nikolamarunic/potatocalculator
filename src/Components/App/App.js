@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Holdings from '../Holdings/Holdings';
 import Accounts from '../Accounts/Accounts';
@@ -6,15 +6,21 @@ import Invest from '../Invest/Invest';
 import Calculator from '../../util/Calculator';
 import Database from '../../util/Database';
 
-
-import { API, graphqlOperation } from 'aws-amplify'
 import { Auth } from 'aws-amplify'
+import { Hub } from 'aws-amplify';
+
 
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    Hub.listen('auth', (data) => {
+      const { payload } = data;
+      this.onAuthEvent(payload);
+      console.log('A new auth event has happened: ', data.payload.data.username + ' has ' + data.payload.event);
+    });
+
     this.state = {
       holdings: [{ name: 'CDN-B', allocation: 20, id: 1 }, { name: 'CDN', allocation: 26, id: 2 },
       { name: 'USA', allocation: 27, id: 3 }, { name: 'INTL', allocation: 27, id: 4 }],
@@ -30,6 +36,7 @@ class App extends React.Component {
       ],
       signedIn: false
     };
+
     this.removeStock = this.removeStock.bind(this);
     this.removeAccount = this.removeAccount.bind(this);
 
@@ -46,8 +53,34 @@ class App extends React.Component {
 
     this.handleLimitChange = this.handleLimitChange.bind(this);
     this.signIn = this.signIn.bind(this);
+    this.signOut = this.signOut.bind(this);
+    this.sendDataToServer = this.sendDataToServer.bind(this);
+    this.onAuthEvent = this.onAuthEvent.bind(this);
   }
 
+  async onAuthEvent(payload) {
+    if (payload.event === 'signIn') {
+      console.log('a user has signed in!');
+      //want to read their values from the database
+      let newItems = await this.getDataFromServer();
+      this.setState({ holdings: newItems.holdings, accounts: newItems.accounts, changes: newItems.changes ,signedIn:true });
+    }
+    if (payload.event === 'signOut') {
+      console.log('a user has signed out!');
+      //Want to send the data for the server to keep
+      this.setState({signedIn: false});
+    }
+  }
+
+  async getDataFromServer() {
+    let newItems = await Database.getValues();
+    // this.setState({ holdings: newItems.holdings, accounts: newItems.accounts, changes: newItems.changes });
+    return newItems;
+  }
+
+  sendDataToServer(holdings, accounts, changes) {
+    Database.saveNewValues(holdings, accounts, changes);
+  }
   //Removes a stock from the user's portfolio. Will affect both the stock component and accounts component.
   removeStock(stock) {
     let stocks = this.state.holdings;
@@ -73,7 +106,7 @@ class App extends React.Component {
     accounts.push(account);
     this.setState({ accounts: accounts });
     //Initialize changes in account to zero
-    Object.keys(account.values).map( function(key){
+    Object.keys(account.values).map(function (key) {
       account.values[key] = 0;
       return 0;
     });
@@ -154,42 +187,49 @@ class App extends React.Component {
     this.setState({ holdings: stocks, accounts: accounts });
   }
 
-  async handleInvest(amount) {
+  handleInvest(amount) {
     if (amount !== null) {  //cant use falsy since that doesnt include zero. Might want zero for rebalance
       let newInvestment = Calculator.calculateInvestment(this.state.holdings, this.state.accounts, amount);
       let newValues = newInvestment[0];
       let accountChanges = newInvestment[1];
       this.setState({ accounts: newValues, changes: accountChanges });
-      // Database.saveNewValues(this.state.holdings, this.state.accounts, this.state.changes);
-      let newItems = await Database.getValues();
-      console.log(newItems);
-      this.setState( {holdings: newItems.holdings, accounts: newItems.accounts, changes: newItems.changes});
+      this.sendDataToServer(this.state.holdings, this.state.accounts, this.state.changes)
     }
   }
+
   handleLimitChange(newAcc) {
     let accounts = this.state.accounts;
     console.log(newAcc);
     console.log(accounts);
     let currAcc = accounts.find(savedAcc => savedAcc.id === newAcc.id);
-
     if (currAcc) {
       currAcc.limit = newAcc.limit;
-
       this.setState({ accounts: accounts });
     }
   }
 
   signIn() {
-    //definitely should happen only in event of successful login
-    this.setState( {signedIn: true});
     Auth.federatedSignIn();
   }
 
+  async signOut() {
+    await this.sendDataToServer(this.state.holdings, this.state.accounts, this.state.changes);
+    Auth.signOut()
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  }
+
   render() {
+    var accountButton;
+    if (this.state.signedIn) {
+      accountButton = <button onClick={this.signOut}>Sign Out</button>;
+    } else {
+      accountButton = <button onClick={this.signIn}>Sign In</button>;
+    }
     return (
       <div>
         <h1>PotatoCalculator</h1>
-        <button onClick={this.signIn}>Sign In</button>
+        {accountButton}
         <div className="leftContainer">
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
             handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />

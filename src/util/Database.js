@@ -1,25 +1,28 @@
 import { API, graphqlOperation } from 'aws-amplify'
-import { createUserInfo, deleteUserInfo, updateUserInfo} from '../graphql/mutations';
-import { listUserInfos} from '../graphql/queries';
+import { createUserInfo } from '../graphql/mutations';
+import { listUserInfos } from '../graphql/queries';
 
 
 
 const Database = {
     async sendValues(holdings, accounts, changes) {
         try {
-            await API.graphql(graphqlOperation(updateUserInfo, {input: {
-                holdings: holdings,
-                accounts: accounts,
-                changes: changes
-              }}));
+            await API.graphql(graphqlOperation(createUserInfo, {
+                input: {
+                    holdings: holdings,
+                    accounts: accounts,
+                    changes: changes
+                }
+            }));
         } catch (err) { console.log('error sending user data to server') }
     },
+
     async fetchValues() {
         try {
             const response = await API.graphql(graphqlOperation(listUserInfos));
             let values = response.data.listUserInfos.items;
             return values;
-        } catch (err) { console.log('error fetching user data to server') }
+        } catch (err) { console.log('error fetching user data from server') }
     },
 
     saveNewValues(holdings, accounts, changes) {
@@ -32,16 +35,22 @@ const Database = {
     async getValues() {
         let values = await this.fetchValues();
         console.log(values);
-        let userInfo = values.pop();
-        let accountInfo = JSON.parse(userInfo.accounts);
-        let holdingInfo = JSON.parse(userInfo.holdings);
-        let changesInfo = JSON.parse(userInfo.changes);
-        let compiledInfo = {
-            accounts: accountInfo,
-            holdings: holdingInfo,
-            changes: changesInfo
-        };
-        return compiledInfo;
+        try {
+            let userInfo = values.pop();
+            let accountInfo = JSON.parse(userInfo.accounts);
+            let holdingInfo = JSON.parse(userInfo.holdings);
+            let changesInfo = JSON.parse(userInfo.changes);
+            let compiledInfo = {
+                accounts: accountInfo,
+                holdings: holdingInfo,
+                changes: changesInfo
+            };
+            return compiledInfo;
+        } catch(error){
+            console.log('error sending data back to app');
+            return null;
+        }
+        
     }
 
 }
