@@ -4,11 +4,11 @@ import Holdings from '../Holdings/Holdings';
 import Accounts from '../Accounts/Accounts';
 import Invest from '../Invest/Invest';
 import Calculator from '../../util/Calculator';
+import Database from '../../util/Database';
+
 
 import { API, graphqlOperation } from 'aws-amplify'
-import { withAuthenticator } from '@aws-amplify/ui-react'
 import { Auth } from 'aws-amplify'
-
 
 
 
@@ -27,7 +27,8 @@ class App extends React.Component {
         { name: 'CAD CASH', values: { 'CDN-B': 0, 'CDN': 0, 'USA': 0, 'INTL': 0 } },
         { name: 'CAD TFSA', values: { 'CDN-B': 0, 'CDN': 0, 'USA': 0, 'INTL': 0 } },
         { name: 'CAD RRSP', values: { 'CDN-B': 0, 'CDN': 0, 'USA': 0, 'INTL': 0 } },
-      ]
+      ],
+      signedIn: false
     };
     this.removeStock = this.removeStock.bind(this);
     this.removeAccount = this.removeAccount.bind(this);
@@ -44,7 +45,7 @@ class App extends React.Component {
     this.handleInvest = this.handleInvest.bind(this);
 
     this.handleLimitChange = this.handleLimitChange.bind(this);
-
+    this.signIn = this.signIn.bind(this);
   }
 
   //Removes a stock from the user's portfolio. Will affect both the stock component and accounts component.
@@ -157,8 +158,12 @@ class App extends React.Component {
     if (amount !== null) {  //cant use falsy since that doesnt include zero. Might want zero for rebalance
       let newInvestment = Calculator.calculateInvestment(this.state.holdings, this.state.accounts, amount);
       let newValues = newInvestment[0];
-      let changes = newInvestment[1];
-      this.setState({ accounts: newValues, changes: changes });
+      let accountChanges = newInvestment[1];
+      this.setState({ accounts: newValues, changes: accountChanges });
+      // Database.saveNewValues(this.state.holdings, this.state.accounts, this.state.changes);
+      let newItems = Database.getValues();
+      console.log(newItems);
+      // this.setState( {holdings: newItems.holdings, accounts: newItems.accounts, changes: newItems.changes});
     }
   }
   handleLimitChange(newAcc) {
@@ -172,14 +177,19 @@ class App extends React.Component {
 
       this.setState({ accounts: accounts });
     }
+  }
 
+  signIn() {
+    //definitely should happen only in event of successful login
+    this.setState( {signedIn: true});
+    Auth.federatedSignIn();
   }
 
   render() {
     return (
       <div>
         <h1>PotatoCalculator</h1>
-        <button onClick={() => Auth.federatedSignIn()}>Sign In</button>
+        <button onClick={this.signIn}>Sign In</button>
         <div className="leftContainer">
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
             handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
