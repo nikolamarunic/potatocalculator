@@ -154,16 +154,16 @@ class App extends React.Component {
     this.setState({ holdings: stocks, accounts: accounts });
   }
 
-  handleInvest(amount) {
+  async handleInvest(amount) {
     if (amount !== null) {  //cant use falsy since that doesnt include zero. Might want zero for rebalance
       let newInvestment = Calculator.calculateInvestment(this.state.holdings, this.state.accounts, amount);
       let newValues = newInvestment[0];
       let accountChanges = newInvestment[1];
       this.setState({ accounts: newValues, changes: accountChanges });
       // Database.saveNewValues(this.state.holdings, this.state.accounts, this.state.changes);
-      let newItems = Database.getValues();
+      let newItems = await Database.getValues();
       console.log(newItems);
-      // this.setState( {holdings: newItems.holdings, accounts: newItems.accounts, changes: newItems.changes});
+      this.setState( {holdings: newItems.holdings, accounts: newItems.accounts, changes: newItems.changes});
     }
   }
   handleLimitChange(newAcc) {
