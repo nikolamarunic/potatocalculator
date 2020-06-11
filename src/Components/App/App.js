@@ -56,9 +56,14 @@ class App extends React.Component {
       this.setState({ signedIn: false });
     }
   }
+  async getUserIdToken() {
+    let user = await Auth.currentAuthenticatedUser();
+    return user.attributes.sub;
+  }
 
   async getDataFromServer() {
-    let newItems = await Database.getValues();
+    let idToken = await this.getUserIdToken();
+    let newItems = await Database.getValues(idToken);
     if (newItems) {
       return newItems;
     }
@@ -66,9 +71,11 @@ class App extends React.Component {
 
   }
 
-  sendDataToServer(holdings, accounts, changes) {
-    Database.saveNewValues(holdings, accounts, changes);
+  async sendDataToServer(holdings, accounts, changes) {
+    let idToken = await this.getUserIdToken();
+    Database.saveNewValues(holdings, accounts, changes, idToken);
   }
+
   //Removes a stock from the user's portfolio. Will affect both the stock component and accounts component.
   removeStock(stock) {
     let stocks = this.state.holdings;
@@ -181,7 +188,7 @@ class App extends React.Component {
       let newValues = newInvestment[0];
       let accountChanges = newInvestment[1];
       this.setState({ accounts: newValues, changes: accountChanges });
-      this.sendDataToServer(this.state.holdings, this.state.accounts, this.state.changes)
+      this.sendDataToServer(this.state.holdings, this.state.accounts, this.state.changes);
     }
   }
 
