@@ -1,6 +1,6 @@
 {
 	"auth": {
-		"potatocalculator7abcb48a": {
+		"potatocalculatorc4808183": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": []
@@ -16,7 +16,7 @@
 					"defaultAuthentication": {
 						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
 						"userPoolConfig": {
-							"userPoolId": "authpotatocalculator7abcb48a"
+							"userPoolId": "authpotatocalculatorc4808183"
 						}
 					}
 				}

@@ -1,12 +1,12 @@
 {
-    "identityPoolName": "potatocalculator7abcb48a_identitypool_515c2d89",
+    "identityPoolName": "potatocalculatorc4808183_identitypool_c4808183",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "potato7abcb48a",
-    "userPoolName": "potatocalculator7abcb48a_userpool_7abcb48a",
+    "resourceNameTruncated": "potatoc4808183",
+    "userPoolName": "potatocalculatorc4808183_userpool_c4808183",
     "autoVerifiedAttributes": [
         "email"
     ],
-    "mfaConfiguration": "OPTIONAL",
+    "mfaConfiguration": "OFF",
     "mfaTypes": [
         "SMS Text Message"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "potato7abcb48a_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "potatoc4808183_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "7abcb48a",
-    "resourceName": "potatocalculator7abcb48a",
+    "sharedId": "c4808183",
+    "resourceName": "potatocalculatorc4808183",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -46,21 +46,19 @@
         ]
     },
     "useDefault": "defaultSocial",
-    "userPoolGroupList": [],
-    "dependsOn": [],
-    "userPoolGroups": false,
-    "adminQueries": false,
-    "triggers": "{}",
     "hostedUI": true,
-    "parentStack": {
-        "Ref": "AWS::StackId"
-    },
-    "permissions": [],
-    "hostedUIDomainName": "potatocalculator-login",
+    "triggers": "{}",
+    "hostedUIDomainName": "potatocalculator",
     "authProvidersUserPool": [
         "Facebook",
         "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
+    "userPoolGroupList": [],
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [],
+    "dependsOn": []
 }
