@@ -217,14 +217,16 @@ class App extends React.Component {
   render() {
     var accountButton;
     if (this.state.signedIn) {
-      accountButton = <button onClick={this.signOut}>Sign Out</button>;
+      accountButton = <button onClick={this.signOut} className="loginAction">Sign Out</button>;
     } else {
-      accountButton = <button onClick={this.signIn}>Sign In</button>;
+      accountButton = <button onClick={this.signIn} className="loginAction">Sign In</button>;
     }
     return (
       <div>
-        <h1>PotatoCalculator</h1>
-        {accountButton}
+        <header className="App-header">
+          <h1>PotatoCalculator</h1>
+          {accountButton}
+        </header>
         <div className="leftContainer">
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
             handleNameChange={this.handleNameChange} handleAllocChange={this.handleAllocChange} />
