@@ -68,7 +68,12 @@ class Account extends React.Component {
               })
             }
           </div>
-           var accountMax =   <input className="accountMax" key={`max${this.props.account.id}`} type='number' value={this.props.account.limit} onChange={this.handleLimitChange}></input>
+           var accountMax =   
+           <div className="accountStats">
+             <p className="limitTag">Limit: $ </p>
+             <input className="accountMax" key={`max${this.props.account.id}`} type='number' placeholder="correct"
+             value={this.props.account.limit} onChange={this.handleLimitChange}></input>
+           </div>
     } else {
       var entries =
         <div className="entries">

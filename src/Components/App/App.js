@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import Holdings from '../Holdings/Holdings';
 import Accounts from '../Accounts/Accounts';
