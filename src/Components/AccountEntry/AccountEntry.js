@@ -36,7 +36,7 @@ class AccountEntry extends React.Component {
     return (
       <div className="AccountEntry">
         <div className="Account-information">
-          <h4 type='text' className="name">{this.props.name}</h4>
+          <h3 type='text' className="name">{this.props.name}</h3>
           <input key={this.key} type='number' value={this.props.value} className="value" onChange={this.handleAmountChange}
             style={{ color: textColour }}></input>
         </div>
