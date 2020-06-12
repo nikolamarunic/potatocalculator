@@ -31,7 +31,18 @@
 .loginAction:hover {
   background-color: white;
 }
-
+.fileInput {
+  cursor: pointer;
+  float: left;
+  position: absolute;
+  top: .7em;
+  left: 1em;
+  background-color: #dddfe6;
+  color: #333a47;
+  font-size: 1.2rem;
+  border-radius: 0.1em;
+  transition: background-color .25s;
+}
 
 h1 { 
   margin: 0;

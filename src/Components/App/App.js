@@ -6,6 +6,7 @@ import Invest from '../Invest/Invest';
 import Calculator from '../../util/Calculator';
 import Database from '../../util/Database';
 import defaultState from '../../util/Constants';
+import CSVReader from '../../util/CSVReader';
 
 import { Auth } from 'aws-amplify'
 import { Hub } from 'aws-amplify';
@@ -35,6 +36,7 @@ class App extends React.Component {
     this.handleAccountNameChange = this.handleAccountNameChange.bind(this);
 
     this.handleInvest = this.handleInvest.bind(this);
+    this.handleFile = this.handleFile.bind(this);
 
     this.handleLimitChange = this.handleLimitChange.bind(this);
     this.signIn = this.signIn.bind(this);
@@ -202,6 +204,14 @@ class App extends React.Component {
       this.setState({ accounts: accounts });
     }
   }
+  handleFile(event) {
+    let file = event.target.files[0];
+    let accountValues = CSVReader.read_csv(file);
+  }
+
+  // handleFileClick(event) {
+  //   document.getElementById('takePic').click();
+  // }
 
   signIn() {
     Auth.federatedSignIn();
@@ -226,6 +236,8 @@ class App extends React.Component {
         <header className="App-header">
           <h1>PotatoCalculator</h1>
           {accountButton}
+          <input type="file" valiue= "Upload a TD CSV" id= "fileInput" className="fileInput" onChange={this.handleFile} />
+          {/* <input type="button" className = "fileClicker" value="Upload a TD CSV" onclick={this.handleFileClick} /> */}
         </header>
         <div className="leftContainer">
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
