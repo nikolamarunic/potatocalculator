@@ -11,8 +11,6 @@ import CSVParser from '../../util/CSVParser';
 import { Auth } from 'aws-amplify'
 import { Hub } from 'aws-amplify';
 
-// import { csv } from 'd3';
-// import { useEffect } from 'react';
 import CSVReader from "react-csv-reader";
 
 
@@ -137,13 +135,17 @@ class App extends React.Component {
   //Handles the account's name being changed.
   handleAccountNameChange(newAcc) {
     let accounts = this.state.accounts;
+    let changes = this.state.changes;
+
     let oldName = newAcc.name;
     let newName = newAcc.newName;
 
     let currAcc = accounts.find(savedAcc => savedAcc.name === oldName);
     currAcc.name = newName;
+    let currChange = changes.find(savedChange => savedChange.name === oldName);
+    currChange.name = newName;
 
-    this.setState({ accounts: accounts });
+    this.setState({ accounts: accounts, changes: changes });
 
   }
 
@@ -216,15 +218,15 @@ class App extends React.Component {
     }
   }
   handleFile(data, fileInfo) {
-    // let file = event.target.files[0];
-    let accountValues = CSVParser.read_csv(data);
-
+    let accountValues = CSVParser.read_csv(data, this.state.accounts, this.state.holdings, this.state.changes);
     console.log(accountValues);
+    this.setState({
+      accounts: accountValues.accounts,
+      changes: accountValues.changes,
+      holdings: accountValues.holdings
+    });
   }
 
-  // handleFileClick(event) {
-  //   document.getElementById('takePic').click();
-  // }
 
   signIn() {
     Auth.federatedSignIn();
