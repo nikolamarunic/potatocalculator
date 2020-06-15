@@ -236,7 +236,7 @@ class App extends React.Component {
         <header className="App-header">
           <h1>PotatoCalculator</h1>
           {accountButton}
-          <input type="file" valiue= "Upload a TD CSV" id= "fileInput" className="fileInput" onChange={this.handleFile} />
+          {/* <input type="file" valiue= "Upload a TD CSV" id= "fileInput" className="fileInput" onChange={this.handleFile} /> */}
           {/* <input type="button" className = "fileClicker" value="Upload a TD CSV" onclick={this.handleFileClick} /> */}
         </header>
         <div className="leftContainer">
