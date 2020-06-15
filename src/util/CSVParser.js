@@ -27,11 +27,13 @@ const CSVParser = {
     fix_accounts(newAccount, accounts, holdings) {
         console.log(newAccount);
         //If account already exists just want to extract values
-        let usedNames = this.get_names(accounts);
+        let accountNames = this.get_names(accounts);
         let accountName = newAccount.name;
         delete newAccount.name;
+        //all the holding names, new ones included
+        let holdingNames = this.get_names(holdings);
 
-        if (usedNames.includes(accountName)){
+        if (accountNames.includes(accountName)){
             //account already exists
             //need to just append the new keys to the account
             let currAccount = accounts.find(savedAcc => savedAcc.name === accountName);
@@ -42,14 +44,26 @@ const CSVParser = {
         } else {
             //If not an existing account we will just create a new one
             // need to set values of other holding to zero in this account
-            let usedNames = this.get_names(holdings);
-            for (let i = 0; i < usedNames.length; i++){
-                if (!(usedNames[i] in newAccount)){
+            
+            for (let i = 0; i < holdingNames.length; i++){
+                if (!(holdingNames[i] in newAccount)){
                     //set values of holdings not in this account to zero
-                    newAccount[usedNames[i]] = 0;
+                    newAccount[holdingNames[i]] = 0;
                 }
             }
             accounts.push({name: accountName, values: newAccount, limit: -1, id: (accounts[accounts.length - 1].id + 1)});
+        }
+        //Also need to update the holdings of the other accounts to reflect read holdings
+        for (let i = 0; i < accounts.length; i++){
+            let currAccount = accounts[i];
+            let currHoldings = Object.keys(currAccount.values);
+            holdingNames.map((name) => {
+                //want to initialize it to zero if not found in account already
+                if (!(currHoldings.includes(name))){
+                    currAccount.values[name] = 0;
+                }
+            });
+
         }
         return {accounts: accounts, newAccount: accountName};
     },
@@ -105,7 +119,10 @@ const CSVParser = {
 
         let new_changes = this.fix_changes(changes, accountChanges.newAccount, new_holdings);
 
-        return {holdings: new_holdings, accounts: new_accounts, changes: new_changes};
+        let items = {holdings: new_holdings, accounts: new_accounts, changes: new_changes};
+        console.log(items);
+
+        return items;
     }
 }
 
