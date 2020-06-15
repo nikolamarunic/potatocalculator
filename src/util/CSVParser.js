@@ -106,7 +106,7 @@ const CSVParser = {
         try {
             //want to get rid of 'td direct investing' in the name
             let fullName = file[0][Object.keys(file[0])[1]];
-            accountValues["name"] = fullName.slice(fullName.indexOf(' - ') + 3, fullName.length - 1);
+            accountValues["name"] = fullName.slice(fullName.indexOf(' - ') + 3, fullName.length);
             for (let i = START_INDEX; i < length; i++){
                 accountValues[file[i].as_of_date] = file[i].__parsed_extra[VALUE_INDEX];
             }
