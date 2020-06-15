@@ -60,5 +60,5 @@
     },
     "permissions": [],
     "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://www.potatocalculator.com/\"],\"LogoutURLs\":[\"http://localhost:3000/\",\"https://www.potatocalculator.com/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://www.potatocalculator.com/\",\"https://www.potatocalculator.com/\"],\"LogoutURLs\":[\"https://www.potatocalculator.com/\",\"https://www.potatocalculator.com/\"]}"
 }
