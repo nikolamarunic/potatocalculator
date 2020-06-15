@@ -31,7 +31,9 @@
 .loginAction:hover {
   background-color: white;
 }
-.fileInput {
+
+
+.fileClicker {
   cursor: pointer;
   float: left;
   position: absolute;
@@ -42,6 +44,9 @@
   font-size: 1.2rem;
   border-radius: 0.1em;
   transition: background-color .25s;
+}
+.fileInput {
+  display: none;
 }
 
 h1 { 

@@ -39,6 +39,7 @@ class App extends React.Component {
 
     this.handleInvest = this.handleInvest.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.handleFileClick = this.handleFileClick.bind(this);
 
     this.handleLimitChange = this.handleLimitChange.bind(this);
     this.signIn = this.signIn.bind(this);
@@ -227,6 +228,10 @@ class App extends React.Component {
     });
   }
 
+  handleFileClick(event) {
+    document.getElementById('react-csv-reader-input').click();
+  }
+
 
   signIn() {
     Auth.federatedSignIn();
@@ -252,12 +257,13 @@ class App extends React.Component {
           <h1>PotatoCalculator</h1>
           {accountButton}
           <CSVReader
+            id="fileInput"
             cssClass="fileInput"
             label="Select CSV with your TD account info"
             onFileLoaded={this.handleFile}
             parserOptions={this.parseOptions}
           />
-          {/* <input type="button" className = "fileClicker" value="Upload a TD CSV" onclick={this.handleFileClick} /> */}
+          <input type="button" className="fileClicker" value="Upload a TD CSV" onClick={this.handleFileClick} />
         </header>
         <div className="leftContainer">
           <Holdings holdings={this.state.holdings} onRemove={this.removeStock} onAdd={this.addStock}
