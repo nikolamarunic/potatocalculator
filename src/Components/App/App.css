@@ -35,8 +35,9 @@
 
 .fileClicker {
   cursor: pointer;
-  float: left;
   position: absolute;
+  outline: 0;
+  border: 0;
   top: .7em;
   left: 1em;
   background-color: #dddfe6;
@@ -45,6 +46,11 @@
   border-radius: 0.1em;
   transition: background-color .25s;
 }
+
+.fileClicker:hover {
+  background-color: white;
+}
+
 .fileInput {
   display: none;
 }
