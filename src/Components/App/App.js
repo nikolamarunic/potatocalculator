@@ -6,10 +6,14 @@ import Invest from '../Invest/Invest';
 import Calculator from '../../util/Calculator';
 import Database from '../../util/Database';
 import defaultState from '../../util/Constants';
-import CSVReader from '../../util/CSVReader';
+import CSVParser from '../../util/CSVParser';
 
 import { Auth } from 'aws-amplify'
 import { Hub } from 'aws-amplify';
+
+// import { csv } from 'd3';
+// import { useEffect } from 'react';
+import CSVReader from "react-csv-reader";
 
 
 class App extends React.Component {
@@ -44,6 +48,13 @@ class App extends React.Component {
     this.sendDataToServer = this.sendDataToServer.bind(this);
     this.onAuthEvent = this.onAuthEvent.bind(this);
   }
+
+  parseOptions = {
+    header: true,
+    dynamicTyping: true,
+    skipEmptyLines: true,
+    transformHeader: header => header.toLowerCase().replace(/\W/g, "_")
+  };
 
   async onAuthEvent(payload) {
     if (payload.event === 'signIn') {
@@ -204,9 +215,11 @@ class App extends React.Component {
       this.setState({ accounts: accounts });
     }
   }
-  handleFile(event) {
-    let file = event.target.files[0];
-    let accountValues = CSVReader.read_csv(file);
+  handleFile(data, fileInfo) {
+    // let file = event.target.files[0];
+    let accountValues = CSVParser.read_csv(data);
+
+    console.log(accountValues);
   }
 
   // handleFileClick(event) {
@@ -236,7 +249,12 @@ class App extends React.Component {
         <header className="App-header">
           <h1>PotatoCalculator</h1>
           {accountButton}
-          {/* <input type="file" valiue= "Upload a TD CSV" id= "fileInput" className="fileInput" onChange={this.handleFile} /> */}
+          <CSVReader
+            cssClass="fileInput"
+            label="Select CSV with your TD account info"
+            onFileLoaded={this.handleFile}
+            parserOptions={this.parseOptions}
+          />
           {/* <input type="button" className = "fileClicker" value="Upload a TD CSV" onclick={this.handleFileClick} /> */}
         </header>
         <div className="leftContainer">
