@@ -17,6 +17,7 @@ import CSVReader from "react-csv-reader";
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     Hub.listen('auth', (data) => {
       const { payload } = data;
       this.onAuthEvent(payload);
@@ -48,6 +49,7 @@ class App extends React.Component {
     this.onAuthEvent = this.onAuthEvent.bind(this);
   }
 
+  //Necessary for CSV Parsing
   parseOptions = {
     header: true,
     dynamicTyping: true,

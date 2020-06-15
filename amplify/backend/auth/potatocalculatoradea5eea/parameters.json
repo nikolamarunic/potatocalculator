@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "potatocalculatorc4808183_identitypool_c4808183",
+    "identityPoolName": "potatocalculatoradea5eea_identitypool_adea5eea",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "potatoc4808183",
-    "userPoolName": "potatocalculatorc4808183_userpool_c4808183",
+    "resourceNameTruncated": "potatoadea5eea",
+    "userPoolName": "potatocalculatoradea5eea_userpool_adea5eea",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "potatoc4808183_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "potatoadea5eea_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "c4808183",
-    "resourceName": "potatocalculatorc4808183",
+    "sharedId": "adea5eea",
+    "resourceName": "potatocalculatoradea5eea",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -54,11 +54,11 @@
         "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.potatocalculator.com/\"],\"LogoutURLs\":[\"https://www.potatocalculator.com/\"]}",
     "userPoolGroupList": [],
     "parentStack": {
         "Ref": "AWS::StackId"
     },
     "permissions": [],
-    "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\",\"https://www.potatocalculator.com/\",\"https://www.potatocalculator.com/\"],\"LogoutURLs\":[\"https://www.potatocalculator.com/\",\"https://www.potatocalculator.com/\"]}"
+    "dependsOn": []
 }
