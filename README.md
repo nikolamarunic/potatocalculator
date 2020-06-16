@@ -4,7 +4,7 @@ The app was made with **React** and makes use of **AWS Amplify, Cognito, DynamoD
 
 ![Image of Potatocalculator](https://github.com/nikolamarunic/images/blob/master/potatocalculator_splash.png)
 
-##Overview
+# Overview
 The app allows users to add, delete, and edit their stock holdings on the left hand side of the screen, as well as their target allocation for that holding within their portfolio.
 
 <p align="center">
