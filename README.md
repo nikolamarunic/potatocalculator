@@ -9,6 +9,6 @@ The app allows users to add, delete, and edit their stock holdings on the left h
 
 The user can also declare their accounts and the amount within each account. These are the values which the app will use to calculate how much the user should put in each of their holdings when investing a given amount.
 
-![Gif of accounts](https://media.giphy.com/media/f7Rw6JiOa0REgHAOq6/source.mp4)
+![Gif of accounts](https://media.giphy.com/media/f7Rw6JiOa0REgHAOq6/giphy.gif)
 
 LICENSE: MIT
