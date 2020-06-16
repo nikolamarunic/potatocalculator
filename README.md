@@ -13,21 +13,29 @@ The app allows users to add, delete, and edit their stock holdings on the left h
 
 The user can also declare their accounts and the amount within each account. These are the values which the app will use to calculate how much the user should put in each of their holdings when investing a given amount.
 
-![Gif of accounts](https://media.giphy.com/media/PlUFhbOUWsfkrNNsav/giphy.gif)
+<p align="center">
+  <img src = https://media.giphy.com/media/PlUFhbOUWsfkrNNsav/giphy.gif>
+</p>
 
 Users of TD Webbroker can also upload the CSV files exported from their accounts and have them directly accessible in the web app.
 
-![Gif of CSVs](https://media.giphy.com/media/JUeHEQSQBrJippvFtU/giphy.gif)
+<p align="center">
+  <img src = https://media.giphy.com/media/JUeHEQSQBrJippvFtU/giphy.gif>
+</p>
 
 Once the user has the allocations and accounts to their liking, they can invest a given dollar amount. Based on the target allocations which theyve inputted and the acutal allocations of the holdings in their accounts, the app will tell the user how much to buy/sell of each holding in each account.
 
 Users may click the hamburger button to see the change in each of their holdings after investing. This is also where users may customize the account limits for special accounts such as a TFSAs, RRSPs or 401ks.
 
-![Gif of CSVs](https://media.giphy.com/media/MayHeCjE70ZJyhNbFF/giphy.gif)
+<p align="center">
+  <img src = https://media.giphy.com/media/MayHeCjE70ZJyhNbFF/giphy.gif>
+</p>
 
 Finally users can create and account and have all their information saved as they perform their actions.
 
-![Gif of signin](https://media.giphy.com/media/cKP1NQZ6EN7UlAMUim/giphy.gif)
+<p align="center">
+  <img src = https://media.giphy.com/media/cKP1NQZ6EN7UlAMUim/giphy.gif>
+</p>
 
 All UI was created from scratch for learning purposes and so may not be totally responsive.
 
