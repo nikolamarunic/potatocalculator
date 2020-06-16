@@ -34,7 +34,7 @@ Users may click the hamburger button to see the change in each of their holdings
 Finally users can create and account and have all their information saved as they perform their actions.
 
 <p align="center">
-  <img src = https://github.com/nikolamarunic/images/blob/master/ezgif.com-optimize.gif>
+  <img src = https://github.com/nikolamarunic/images/blob/master/ezgif.com-optimize-2.gif>
 </p>
 
 All UI was created from scratch for learning purposes and so may not be totally responsive.
