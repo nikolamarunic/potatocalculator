@@ -39,4 +39,5 @@ Finally users can create and account and have all their information saved as the
 
 All UI was created from scratch for learning purposes and so may not be totally responsive.
 
-LICENSE: MIT
+# LICENSE
+MIT
