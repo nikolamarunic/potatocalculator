@@ -1,3 +1,5 @@
+# PotatoCalculator
+
 A web app for managing your stock portfolio, inspired by the Canadian Couch Potato model.
 
 View live: https://www.potatocalculator.com
